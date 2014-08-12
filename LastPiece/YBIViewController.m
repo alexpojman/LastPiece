@@ -7,7 +7,6 @@
 //
 
 #import "YBIViewController.h"
-#import "YBIParticipantViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Chameleon.h"
 #import "YBIAddNameViewController.h"

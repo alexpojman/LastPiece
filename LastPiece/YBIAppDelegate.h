@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class YBIViewController;
+
 @interface YBIAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) YBIViewController *viewController;
 
 @end

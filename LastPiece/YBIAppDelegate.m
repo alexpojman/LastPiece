@@ -7,14 +7,24 @@
 //
 
 #import "YBIAppDelegate.h"
+#import "YBIViewController.h"
 
 @implementation YBIAppDelegate
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    YBIViewController *mainViewController = [[YBIViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    
+    // Place BNRItemsViewController's table view in the window hierarchy
+    self.window.rootViewController = navController;
+
     [self.window makeKeyAndVisible];
     return YES;
 }

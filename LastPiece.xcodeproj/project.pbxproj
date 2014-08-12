@@ -19,6 +19,19 @@
 		ED9F9CBA19888B8E00D754EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA219888B8E00D754EA /* UIKit.framework */; };
 		ED9F9CC219888B8E00D754EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED9F9CC019888B8E00D754EA /* InfoPlist.strings */; };
 		ED9F9CC419888B8E00D754EA /* LastPieceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CC319888B8E00D754EA /* LastPieceTests.m */; };
+		ED9F9CCF19888E9B00D754EA /* YBIPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CCE19888E9B00D754EA /* YBIPieChart.m */; };
+		ED9F9CD51988967B00D754EA /* YBIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CD31988967B00D754EA /* YBIViewController.m */; };
+		ED9F9CD61988967B00D754EA /* YBIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9F9CD41988967B00D754EA /* YBIViewController.xib */; };
+		ED9F9CE21989AD6300D754EA /* ChameleonStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CDB1989AD6300D754EA /* ChameleonStatusBar.m */; };
+		ED9F9CE31989AD6300D754EA /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CDD1989AD6300D754EA /* NSArray+Chameleon.m */; };
+		ED9F9CE41989AD6300D754EA /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CDF1989AD6300D754EA /* UIColor+Chameleon.m */; };
+		ED9F9CE51989AD6300D754EA /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CE11989AD6300D754EA /* UIViewController+Chameleon.m */; };
+		ED9F9CE81989F26100D754EA /* YBIParticipantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CE71989F26100D754EA /* YBIParticipantViewController.m */; };
+		EDBD12D7199555D300E5DE0F /* YBIAddNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */; };
+		EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */; };
+		EDBD12DC1995654000E5DE0F /* YBINameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12DA1995654000E5DE0F /* YBINameCell.m */; };
+		EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBD12DB1995654000E5DE0F /* YBINameCell.xib */; };
+		EDBD12E0199675C500E5DE0F /* YBISwirlGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +61,31 @@
 		ED9F9CBF19888B8E00D754EA /* LastPieceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LastPieceTests-Info.plist"; sourceTree = "<group>"; };
 		ED9F9CC119888B8E00D754EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED9F9CC319888B8E00D754EA /* LastPieceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LastPieceTests.m; sourceTree = "<group>"; };
+		ED9F9CCD19888E9B00D754EA /* YBIPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIPieChart.h; sourceTree = "<group>"; };
+		ED9F9CCE19888E9B00D754EA /* YBIPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIPieChart.m; sourceTree = "<group>"; };
+		ED9F9CD21988967B00D754EA /* YBIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIViewController.h; sourceTree = "<group>"; };
+		ED9F9CD31988967B00D754EA /* YBIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIViewController.m; sourceTree = "<group>"; };
+		ED9F9CD41988967B00D754EA /* YBIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIViewController.xib; sourceTree = "<group>"; };
+		ED9F9CD81989AD6300D754EA /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
+		ED9F9CD91989AD6300D754EA /* ChameleonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonMacros.h; sourceTree = "<group>"; };
+		ED9F9CDA1989AD6300D754EA /* ChameleonStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonStatusBar.h; sourceTree = "<group>"; };
+		ED9F9CDB1989AD6300D754EA /* ChameleonStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonStatusBar.m; sourceTree = "<group>"; };
+		ED9F9CDC1989AD6300D754EA /* NSArray+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		ED9F9CDD1989AD6300D754EA /* NSArray+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Chameleon.m"; sourceTree = "<group>"; };
+		ED9F9CDE1989AD6300D754EA /* UIColor+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		ED9F9CDF1989AD6300D754EA /* UIColor+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Chameleon.m"; sourceTree = "<group>"; };
+		ED9F9CE01989AD6300D754EA /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		ED9F9CE11989AD6300D754EA /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		ED9F9CE61989F26100D754EA /* YBIParticipantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIParticipantViewController.h; sourceTree = "<group>"; };
+		ED9F9CE71989F26100D754EA /* YBIParticipantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIParticipantViewController.m; sourceTree = "<group>"; };
+		EDBD12D4199555D300E5DE0F /* YBIAddNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIAddNameViewController.h; sourceTree = "<group>"; };
+		EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIAddNameViewController.m; sourceTree = "<group>"; };
+		EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIAddNameViewController.xib; sourceTree = "<group>"; };
+		EDBD12D91995654000E5DE0F /* YBINameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBINameCell.h; sourceTree = "<group>"; };
+		EDBD12DA1995654000E5DE0F /* YBINameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBINameCell.m; sourceTree = "<group>"; };
+		EDBD12DB1995654000E5DE0F /* YBINameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBINameCell.xib; sourceTree = "<group>"; };
+		EDBD12DE199675C500E5DE0F /* YBISwirlGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBISwirlGestureRecognizer.h; sourceTree = "<group>"; };
+		EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBISwirlGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +115,26 @@
 		ED9F9C9219888B8E00D754EA = {
 			isa = PBXGroup;
 			children = (
+				ED9F9CD21988967B00D754EA /* YBIViewController.h */,
+				ED9F9CD31988967B00D754EA /* YBIViewController.m */,
+				EDBD12D4199555D300E5DE0F /* YBIAddNameViewController.h */,
+				EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */,
+				EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */,
+				EDBD12DE199675C500E5DE0F /* YBISwirlGestureRecognizer.h */,
+				EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */,
+				EDBD12D91995654000E5DE0F /* YBINameCell.h */,
+				EDBD12DA1995654000E5DE0F /* YBINameCell.m */,
+				EDBD12DB1995654000E5DE0F /* YBINameCell.xib */,
+				ED9F9CE61989F26100D754EA /* YBIParticipantViewController.h */,
+				ED9F9CE71989F26100D754EA /* YBIParticipantViewController.m */,
+				ED9F9CD41988967B00D754EA /* YBIViewController.xib */,
+				ED9F9CCD19888E9B00D754EA /* YBIPieChart.h */,
+				ED9F9CCE19888E9B00D754EA /* YBIPieChart.m */,
 				ED9F9CA419888B8E00D754EA /* LastPiece */,
 				ED9F9CBD19888B8E00D754EA /* LastPieceTests */,
 				ED9F9C9D19888B8E00D754EA /* Frameworks */,
 				ED9F9C9C19888B8E00D754EA /* Products */,
+				ED9F9CD71989AD6300D754EA /* Chameleon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +196,23 @@
 				ED9F9CC019888B8E00D754EA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED9F9CD71989AD6300D754EA /* Chameleon */ = {
+			isa = PBXGroup;
+			children = (
+				ED9F9CD81989AD6300D754EA /* Chameleon.h */,
+				ED9F9CD91989AD6300D754EA /* ChameleonMacros.h */,
+				ED9F9CDA1989AD6300D754EA /* ChameleonStatusBar.h */,
+				ED9F9CDB1989AD6300D754EA /* ChameleonStatusBar.m */,
+				ED9F9CDC1989AD6300D754EA /* NSArray+Chameleon.h */,
+				ED9F9CDD1989AD6300D754EA /* NSArray+Chameleon.m */,
+				ED9F9CDE1989AD6300D754EA /* UIColor+Chameleon.h */,
+				ED9F9CDF1989AD6300D754EA /* UIColor+Chameleon.m */,
+				ED9F9CE01989AD6300D754EA /* UIViewController+Chameleon.h */,
+				ED9F9CE11989AD6300D754EA /* UIViewController+Chameleon.m */,
+			);
+			path = Chameleon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +291,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */,
 				ED9F9CA919888B8E00D754EA /* InfoPlist.strings in Resources */,
+				ED9F9CD61988967B00D754EA /* YBIViewController.xib in Resources */,
+				EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */,
 				ED9F9CB119888B8E00D754EA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +315,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9F9CAB19888B8E00D754EA /* main.m in Sources */,
+				ED9F9CE41989AD6300D754EA /* UIColor+Chameleon.m in Sources */,
+				ED9F9CD51988967B00D754EA /* YBIViewController.m in Sources */,
+				ED9F9CE51989AD6300D754EA /* UIViewController+Chameleon.m in Sources */,
+				EDBD12D7199555D300E5DE0F /* YBIAddNameViewController.m in Sources */,
+				ED9F9CE21989AD6300D754EA /* ChameleonStatusBar.m in Sources */,
+				EDBD12DC1995654000E5DE0F /* YBINameCell.m in Sources */,
+				ED9F9CE31989AD6300D754EA /* NSArray+Chameleon.m in Sources */,
+				ED9F9CE81989F26100D754EA /* YBIParticipantViewController.m in Sources */,
+				ED9F9CCF19888E9B00D754EA /* YBIPieChart.m in Sources */,
+				EDBD12E0199675C500E5DE0F /* YBISwirlGestureRecognizer.m in Sources */,
 				ED9F9CAF19888B8E00D754EA /* YBIAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +522,7 @@
 				ED9F9CC919888B8E00D754EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED9F9CCA19888B8E00D754EA /* Build configuration list for PBXNativeTarget "LastPieceTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +531,7 @@
 				ED9F9CCC19888B8E00D754EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

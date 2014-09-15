@@ -20,9 +20,6 @@
 @synthesize progressBar;
 @synthesize progressValue;
 
-// TODO move this variable
-BOOL animating = NO;
-
 - (instancetype)init
 {
     if (self) {
@@ -41,18 +38,21 @@ BOOL animating = NO;
             }
         }
         self = [super initWithNibName:nibName bundle:nil];
+        
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Last Piece!";
         
         // Create a new bar button item that will send addNewItem to BNRItemsViewController
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addParticipants:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(addParticipants:)];
         
         // Right Bar Navigation Item Setup
-        navItem.rightBarButtonItem = bbi;
-        [navItem.rightBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
+        navItem.leftBarButtonItem = bbi;
+        [navItem.leftBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
         
         [[UINavigationBar appearance] setBarTintColor:self.view.backgroundColor];
         [self.view setBackgroundColor:FlatMint];
+        
+        _animating = NO;
     }
     
     return self;
@@ -61,27 +61,10 @@ BOOL animating = NO;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        // Custom initialization
-        UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"Last Piece!";
-        
-        // Create a new bar button item that will send addNewItem to BNRItemsViewController
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addParticipants:)];
-        
-        // Right Bar Navigation Item Setup
-        navItem.rightBarButtonItem = bbi;
-        [navItem.rightBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
-        
-        [[UINavigationBar appearance] setBarTintColor:self.view.backgroundColor];
-        [self.view setBackgroundColor:FlatMint];
-
-    }
+    
     return self;
 }
 
-// TODO 
 - (IBAction)addParticipants:(id)sender
 {
 
@@ -101,7 +84,6 @@ BOOL animating = NO;
     // Do any additional setup after loading the view from its nib.
     self.slices = [[NSMutableArray alloc] init];
     
-    // TODO: Change this to array of names from table list
     NSArray *names = [NSArray arrayWithObjects:nil];
     for(int i = 0; i < names.count; i ++)
     {
@@ -130,7 +112,7 @@ BOOL animating = NO;
     [self.swirlGestureRecognizer setDelegate:self];
     [self.pieChart addGestureRecognizer:self.swirlGestureRecognizer];
     
-    [self.pieChart setTranslatesAutoresizingMaskIntoConstraints:YES];
+    //[self.pieChart setTranslatesAutoresizingMaskIntoConstraints:YES];
 
 }
 - (void)viewDidUnload
@@ -194,14 +176,14 @@ BOOL animating = NO;
             [self.pieChart setSliceDeselectedAtIndex:i];
         }
     
-        if (!animating) {
-            animating = YES;
+        if (!_animating) {
+            _animating = YES;
             [self spinWithOptions: UIViewAnimationOptionCurveEaseIn];
         }
     } else if([[[_rotateButton titleLabel] text] isEqual: @"STOP"]) {
         [_rotateButton setTitle:@"SPIN" forState:UIControlStateNormal];
         [_rotateButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-        animating = NO;
+        _animating = NO;
         self.pieChart.sliceAnimating = NO;
     }
     
@@ -223,7 +205,7 @@ BOOL animating = NO;
                      }
                      completion: ^(BOOL finished) {
                          if (finished) {
-                             if (animating) {
+                             if (_animating) {
                                  // if flag still set, keep spinning with constant speed
                                  [self spinWithOptions: UIViewAnimationOptionCurveLinear];
                              } else if (options != UIViewAnimationOptionCurveEaseOut) {

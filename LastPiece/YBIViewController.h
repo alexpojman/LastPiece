@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *rotateButton;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+
 @property (nonatomic) float progressValue;
 @property (strong, nonatomic) NSArray *currentNames;           // To Be used to pass back
 @property (strong, nonatomic) YBISwirlGestureRecognizer *swirlGestureRecognizer;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED2FA2C619C73AA000F88993 /* YBIViewController3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */; };
+		ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */ = {isa = PBXBuildFile; fileRef = ED783FED19C681CB0084DCE0 /* ticker-a.png */; };
 		ED9F9C9F19888B8E00D754EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9C9E19888B8E00D754EA /* Foundation.framework */; };
 		ED9F9CA119888B8E00D754EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */; };
 		ED9F9CA319888B8E00D754EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA219888B8E00D754EA /* UIKit.framework */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIViewController3.xib; sourceTree = "<group>"; };
+		ED783FED19C681CB0084DCE0 /* ticker-a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ticker-a.png"; sourceTree = "<group>"; };
 		ED9F9C9B19888B8E00D754EA /* LastPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9F9C9E19888B8E00D754EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,6 +158,7 @@
 		ED9F9CA419888B8E00D754EA /* LastPiece */ = {
 			isa = PBXGroup;
 			children = (
+				ED783FED19C681CB0084DCE0 /* ticker-a.png */,
 				EDE6086F19C26009002C507E /* TPKeyboardAvoidingScrollView.h */,
 				EDE6087019C26009002C507E /* TPKeyboardAvoidingScrollView.m */,
 				EDE6086C19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
@@ -164,6 +169,7 @@
 				ED9F9CD21988967B00D754EA /* YBIViewController.h */,
 				ED9F9CD31988967B00D754EA /* YBIViewController.m */,
 				ED9F9CD41988967B00D754EA /* YBIViewController.xib */,
+				ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */,
 				EDBD12D4199555D300E5DE0F /* YBIAddNameViewController.h */,
 				EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */,
 				EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */,
@@ -305,9 +311,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */,
+				ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */,
 				ED9F9CA919888B8E00D754EA /* InfoPlist.strings in Resources */,
 				ED9F9CD61988967B00D754EA /* YBIViewController.xib in Resources */,
 				EDE6086819C1EE0C002C507E /* left arrow.jpeg in Resources */,
+				ED2FA2C619C73AA000F88993 /* YBIViewController3.xib in Resources */,
 				EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */,
 				ED9F9CB119888B8E00D754EA /* Images.xcassets in Resources */,
 			);
@@ -458,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LastPiece/LastPiece-Prefix.pch";
 				INFOPLIST_FILE = "LastPiece/LastPiece-Info.plist";
@@ -471,6 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LastPiece/LastPiece-Prefix.pch";
 				INFOPLIST_FILE = "LastPiece/LastPiece-Info.plist";

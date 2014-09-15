@@ -11,6 +11,7 @@
 #import "Chameleon.h"
 #import "YBIAddNameViewController.h"
 
+
 @implementation YBIViewController
 
 @synthesize pieChart = _pieChart;
@@ -25,6 +26,21 @@ BOOL animating = NO;
 - (instancetype)init
 {
     if (self) {
+        NSString *nibName = @"";
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        {
+            CGSize result = [[UIScreen mainScreen] bounds].size;
+            if(result.height == 480)
+            {
+                nibName = @"YBIViewController3";
+                
+            }
+            if(result.height == 568)
+            {
+                nibName = @"YBIViewController";
+            }
+        }
+        self = [super initWithNibName:nibName bundle:nil];
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Last Piece!";
         
@@ -42,19 +58,38 @@ BOOL animating = NO;
     return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+        // Custom initialization
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Last Piece!";
+        
+        // Create a new bar button item that will send addNewItem to BNRItemsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addParticipants:)];
+        
+        // Right Bar Navigation Item Setup
+        navItem.rightBarButtonItem = bbi;
+        [navItem.rightBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
+        
+        [[UINavigationBar appearance] setBarTintColor:self.view.backgroundColor];
+        [self.view setBackgroundColor:FlatMint];
+
+    }
+    return self;
+}
+
 // TODO 
 - (IBAction)addParticipants:(id)sender
 {
 
     YBIAddNameViewController *advc = [[YBIAddNameViewController alloc] initWithNibName:nil bundle:nil namesList:_slices];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:advc];
-    
-    navController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-    
     advc.delegate = self;
     
-    [self presentViewController:navController animated:YES completion:nil];
+    [self.navigationController pushViewController:advc animated:YES];
 }
 
 
@@ -96,7 +131,6 @@ BOOL animating = NO;
     [self.pieChart addGestureRecognizer:self.swirlGestureRecognizer];
     
     [self.pieChart setTranslatesAutoresizingMaskIntoConstraints:YES];
-    
 
 }
 - (void)viewDidUnload

@@ -236,7 +236,7 @@
         [_delegate addNameViewController:self didFinishAddingNames:namesList];
     }
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)nameCell:(YBINameCell *)nc didUpdateField:(NSString *)updatedField

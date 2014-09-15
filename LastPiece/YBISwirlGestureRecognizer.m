@@ -46,7 +46,6 @@
     
     if ([self.target respondsToSelector:self.action]) {
         [self.target performSelector:self.action withObject:self];
-        
     }
 }
 

@@ -68,6 +68,10 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                        [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
         
+        // Set font for winner label
+        UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+        [self.winnerLabel setFont:font];
+        
         _animating = NO;
     }
     
@@ -163,6 +167,9 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         [_rotateButton setHidden:NO];
         
     }
+    
+    // Reset winner label
+    _winnerLabel.transform = CGAffineTransformIdentity;
 
 }
 
@@ -194,13 +201,14 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 - (IBAction) rotate:(UIButton *)sender
 {
     if([[[_rotateButton titleLabel] text] isEqual: @"GO"]) {
-        
+        if (self.pieChart.sliceAnimating == YES) {
+            [self animateWinnerLabel:UIViewAnimationOptionCurveEaseInOut moveBehavior:@"MoveOffScreen"];
+        }
         [self.navigationItem.leftBarButtonItem setEnabled:NO];
         [self fadeButtonWithOptions:UIViewAnimationOptionCurveEaseIn newAlpha:0 buttonToDisplay:@"STOP"];
         for (int i=0; i < [self numberOfSlicesInPieChart:self.pieChart]; i++) {
             [self.pieChart setSliceDeselectedAtIndex:i];
         }
-    
         if (!_animating) {
             _animating = YES;
             [self spinWithOptions: UIViewAnimationOptionCurveLinear];
@@ -322,9 +330,38 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         }
     }
     _winnerLabel.Text = [NSString stringWithFormat:@"Winner is: %@", self.slices[currentPotentialWinnerIndex]];
+    // Animate winner lable
+    [self animateWinnerLabel:UIViewAnimationOptionCurveEaseInOut moveBehavior:@"MoveOnScreen"];
     [self.pieChart setSliceSelectedAtIndex:currentPotentialWinnerIndex];
+     
 }
 
+// TODO: Change so that no "magic numbers" are used
+- (void)animateWinnerLabel: (UIViewAnimationOptions) options moveBehavior:(NSString *)moveBehavior
+{
+    [UIView animateWithDuration: 1.0f
+                          delay: 0.0f
+                        options: options
+                     animations: ^{
+                         NSLog(@"%@, %f", moveBehavior, _winnerLabel.transform.tx);
+                         if ([moveBehavior isEqual:@"MoveOnScreen"])
+                         {
+                             _winnerLabel.transform = CGAffineTransformTranslate(_winnerLabel.transform, 820, _winnerLabel.transform.ty);
+                         }
+                         else if ([moveBehavior isEqual:@"MoveOffScreen"]) {
+                             [_winnerLabel setFrame:CGRectMake(_winnerLabel.transform.tx + 820, _winnerLabel.transform.ty, _winnerLabel.frame.size.width, _winnerLabel.frame.size.height)];
+                             _winnerLabel.transform = CGAffineTransformTranslate(_winnerLabel.transform, 820, _winnerLabel.transform.ty);
+                         }
+                     }
+                     completion: ^(BOOL finished) {
+                         if (finished) {
+                             if ([moveBehavior isEqual:@"MoveOffScreen"]) {
+                                 _winnerLabel.transform = CGAffineTransformIdentity;                             }
+                         
+                         }
+                     }];
+
+}
 #pragma mark - YBIPieChart Data Source
 
 - (NSUInteger)numberOfSlicesInPieChart:(YBIPieChart *)pieChart
@@ -364,7 +401,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 }
 
 #pragma mark - Delegation from YBIAddNameViewController
-
 - (void)addNameViewController:(YBIAddNameViewController *)pvc didFinishAddingNames:(NSMutableArray *)names
 {
     [_slices removeAllObjects];

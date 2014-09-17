@@ -135,10 +135,20 @@
 #pragma mark - 
 - (void)finish:(id)sender
 {
-    //TODO deselect any cell
-    
-    [self.view endEditing:YES];
-    [self sendArrayNamesBack];
+    if ( [self.namesList count] < 2)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hold On A Second!"
+														message:@"You need to add at least two slices to choose from!"
+													   delegate:nil
+											  cancelButtonTitle:@"OK"
+											  otherButtonTitles: nil];
+		[alert show];
+		
+    }
+    else {
+        [self.view endEditing:YES];
+        [self sendArrayNamesBack];
+    }
     //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

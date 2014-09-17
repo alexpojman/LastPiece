@@ -7,6 +7,7 @@
 //
 
 #import "YBINameCell.h"
+#define OFFSET 14
 @interface YBINameCell ()
 
 
@@ -20,6 +21,7 @@
     self.nameField.delegate = self;
     UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:14];
     [self.nameField setFont:font];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -30,11 +32,13 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    self.nameField.center = CGPointMake(self.nameField.center.x+OFFSET, self.nameField.center.y);
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    self.nameField.center = CGPointMake(self.nameField.center.x-OFFSET, self.nameField.center.y);
     return YES;
 }
 
@@ -51,5 +55,6 @@
 {
     return [textField resignFirstResponder];
 }
+
 
 @end

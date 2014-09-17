@@ -23,7 +23,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="232" id="K6Y-bb-sqs"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                     <connections>
                         <action selector="backgroundTapped:" destination="-1" eventType="touchUpOutside" id="628-CO-UMN"/>

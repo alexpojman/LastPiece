@@ -44,6 +44,12 @@
         // Initialize namesList
         self.namesList = [[NSMutableArray alloc] initWithObjects:nil];
         [self.namesList addObjectsFromArray:(NSArray *)currentNamesList];
+        
+        // Set Fonts for navItems
+        [finishItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                        [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -58,7 +64,11 @@
     // Register this NIB, which contains the cell
     [self.usersTable registerNib:nib forCellReuseIdentifier:@"YBINameCell"];
     
+    // Set Fonts for items
+    self.userTextField.font =[UIFont fontWithName:@"MyriadPro-Regular" size:14];
+    self.addUserButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
     
+    // "Add" button should not be enabled on start
     [self.addUserButton setEnabled:NO];
     
     // Initialized tableView with currentList

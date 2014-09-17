@@ -42,6 +42,7 @@
     UITouch *touch = [touches anyObject];
     
     self.currentAngle = [self getTouchAngle:[touch locationInView:touch.view]];
+ 
     self.previousAngle = [self getTouchAngle:[touch previousLocationInView:touch.view]];
     
     if ([self.target respondsToSelector:self.action]) {

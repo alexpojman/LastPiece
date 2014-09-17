@@ -14,6 +14,7 @@
 
 
 @property (strong, nonatomic) IBOutlet YBIPieChart *pieChart;
+@property (weak, nonatomic) IBOutlet UIImageView *piePlaceholder;
 @property (nonatomic, strong) NSMutableArray *slices;
 @property (nonatomic, strong) NSArray        *sliceColors;
 @property (weak, nonatomic) IBOutlet UIButton *rotateButton;

@@ -18,6 +18,8 @@
 {
     // Initialization code
     self.nameField.delegate = self;
+    UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:14];
+    [self.nameField setFont:font];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -132,7 +132,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         self.pieRadius = MIN(frame.size.width/2, frame.size.height/2) - 10;
         self.pieCenter = CGPointMake(frame.size.width/2, frame.size.height/2);
-        self.labelFont = [UIFont boldSystemFontOfSize:MAX((int)self.pieRadius/10, 5)];
+        self.labelFont = [UIFont fontWithName:@"MyriadPro-Regular" size:MAX((int)self.pieRadius/10, 5)];
         _labelColor = [UIColor whiteColor];
         _labelRadius = _pieRadius/2;
         _selectedSliceOffsetRadius = MAX(10, _pieRadius/10);
@@ -171,7 +171,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         CGRect bounds = [[self layer] bounds];
         self.pieRadius = MIN(bounds.size.width/2, bounds.size.height/2) - 10;
         self.pieCenter = CGPointMake(bounds.size.width/2, bounds.size.height/2);
-        self.labelFont = [UIFont boldSystemFontOfSize:MAX((int)self.pieRadius/10, 5)];
+        self.labelFont = [UIFont fontWithName:@"MyriadPro-Regular" size:MAX((int)self.pieRadius/10, 5)];
+        //self.labelFont = [UIFont boldSystemFontOfSize:MAX((int)self.pieRadius/10, 5)];
         _labelColor = [UIColor whiteColor];
         _labelRadius = _pieRadius * 0.8;
         _selectedSliceOffsetRadius = MAX(10, _pieRadius/10);
@@ -593,7 +594,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     } [CATransaction commit];
     } else {
         [CATransaction begin]; {
-            [CATransaction setAnimationDuration:0.001];
+            [CATransaction setAnimationDuration:0.0001];
             layer.position=CGPointMake(0, 0);
             layer.opacity = 1.0;
             layer.zPosition=kDefaultSliceZOrder;

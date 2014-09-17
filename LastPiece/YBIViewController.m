@@ -11,6 +11,7 @@
 #import "Chameleon.h"
 #import "YBIAddNameViewController.h"
 
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 @implementation YBIViewController
 
@@ -19,6 +20,17 @@
 @synthesize sliceColors = _sliceColors;
 @synthesize progressBar;
 @synthesize progressValue;
+
+static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAngle, CGFloat endAngle)
+{
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, center.x, center.y);
+    
+    CGPathAddArc(path, NULL, center.x, center.y, radius, startAngle, endAngle, 0);
+    CGPathCloseSubpath(path);
+    
+    return path;
+}
 
 - (instancetype)init
 {
@@ -43,14 +55,18 @@
         navItem.title = @"Last Piece!";
         
         // Create a new bar button item that will send addNewItem to BNRItemsViewController
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(addParticipants:)];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(addParticipants:)];
         
-        // Right Bar Navigation Item Setup
+        // Left Bar Navigation Item Setup
         navItem.leftBarButtonItem = bbi;
         [navItem.leftBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
         
         [[UINavigationBar appearance] setBarTintColor:self.view.backgroundColor];
         [self.view setBackgroundColor:FlatMint];
+        
+        // Set font for Nav Item
+        [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                       [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
         
         _animating = NO;
     }
@@ -71,6 +87,9 @@
     YBIAddNameViewController *advc = [[YBIAddNameViewController alloc] initWithNibName:nil bundle:nil namesList:_slices];
     
     advc.delegate = self;
+    
+    // Delselect the winning slice
+    self.pieChart.sliceAnimating = NO;
     
     [self.navigationController pushViewController:advc animated:YES];
 }
@@ -112,8 +131,6 @@
     [self.swirlGestureRecognizer setDelegate:self];
     [self.pieChart addGestureRecognizer:self.swirlGestureRecognizer];
     
-    //[self.pieChart setTranslatesAutoresizingMaskIntoConstraints:YES];
-
 }
 - (void)viewDidUnload
 {
@@ -124,27 +141,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     // Check the number of slices for enable/disable SPIN button
     if ([self numberOfSlicesInPieChart:self.pieChart] < 2) {
+        [self.navigationItem.leftBarButtonItem setTitle:@""];
+        [self.navigationItem.leftBarButtonItem setEnabled:NO];
         [_rotateButton setEnabled:NO];
         [[_rotateButton titleLabel] setFont:[UIFont systemFontOfSize:15]];
         [_rotateButton setTitle:@"Add at least two slices to spin!" forState:UIControlStateNormal];
         [_rotateButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     } else {
+        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.leftBarButtonItem setEnabled:YES];
+        [_piePlaceholder setHidden:YES];
         [_rotateButton setHidden:YES];
         [_rotateButton setEnabled:YES];
-        [_rotateButton setTitle:@"SPIN" forState:UIControlStateNormal];
+        [_rotateButton setTitle:@"GO" forState:UIControlStateNormal];
+        [_rotateButton setImage:[UIImage imageNamed:@"go.png"] forState:UIControlStateNormal];
         [_rotateButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
         [[_rotateButton titleLabel] setFont:[UIFont systemFontOfSize:32]];
         [_rotateButton setHidden:NO];
-
+        
     }
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     [self.pieChart reloadData];
 }
@@ -152,6 +176,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -168,26 +193,51 @@
 
 - (IBAction) rotate:(UIButton *)sender
 {
-    if([[[_rotateButton titleLabel] text] isEqual: @"SPIN"]) {
+    if([[[_rotateButton titleLabel] text] isEqual: @"GO"]) {
         
-        [_rotateButton setTitle:@"STOP" forState:UIControlStateNormal];
-        [_rotateButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.navigationItem.leftBarButtonItem setEnabled:NO];
+        [self fadeButtonWithOptions:UIViewAnimationOptionCurveEaseIn newAlpha:0 buttonToDisplay:@"STOP"];
         for (int i=0; i < [self numberOfSlicesInPieChart:self.pieChart]; i++) {
             [self.pieChart setSliceDeselectedAtIndex:i];
         }
     
         if (!_animating) {
             _animating = YES;
-            [self spinWithOptions: UIViewAnimationOptionCurveEaseIn];
+            [self spinWithOptions: UIViewAnimationOptionCurveLinear];
         }
     } else if([[[_rotateButton titleLabel] text] isEqual: @"STOP"]) {
-        [_rotateButton setTitle:@"SPIN" forState:UIControlStateNormal];
-        [_rotateButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [self.navigationItem.leftBarButtonItem setEnabled:YES];
+        [self fadeButtonWithOptions:UIViewAnimationOptionCurveEaseIn newAlpha:0 buttonToDisplay:@"GO"];
         _animating = NO;
         self.pieChart.sliceAnimating = NO;
     }
     
     
+}
+
+- (void) fadeButtonWithOptions: (UIViewAnimationOptions) options newAlpha:(float)newAlpha buttonToDisplay:(NSString*)buttonName
+{
+    [UIView animateWithDuration:.1f
+                          delay: 0.0f
+                        options: options
+                     animations:^{
+                         [_rotateButton setAlpha:newAlpha];
+                     }
+                     completion:^(BOOL finished){
+                         if(_rotateButton.alpha < 1) {
+                             if ([buttonName isEqualToString:@"STOP"]) {
+                                 [_rotateButton setTitle:@"STOP" forState:UIControlStateNormal];
+                                 [_rotateButton setImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
+                                 [self fadeButtonWithOptions:UIViewAnimationOptionCurveLinear newAlpha:1 buttonToDisplay:@"STOP"];
+                             }
+                             else if([buttonName isEqualToString:@"GO"]) {
+                                 [_rotateButton setTitle:@"GO" forState:UIControlStateNormal];
+                                 [_rotateButton setImage:[UIImage imageNamed:@"go.png"] forState:UIControlStateNormal];
+                                 [self fadeButtonWithOptions:UIViewAnimationOptionCurveLinear newAlpha:1 buttonToDisplay:@"GO"];
+                             }
+                         }
+                         
+                     }];
 }
 
 - (void) spinWithOptions: (UIViewAnimationOptions) options
@@ -328,38 +378,111 @@
     return UIStatusBarStyleLightContent;
 }
 
+
 #pragma mark - Swirl Gesture Recognizer
 - (void)rotationAction:(id)sender {
     
     if([(YBISwirlGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        
+        // Event only fires if user has rotated some
+        if(self.bearing > 0.0) {
+            // Insert code here for moving backwards
+            [self resetRotationAction:UIViewAnimationOptionCurveEaseInOut delay:0.5f];
+        }
+        
         return;
     }
     
     CGFloat direction = ((YBISwirlGestureRecognizer*)sender).currentAngle
     - ((YBISwirlGestureRecognizer*)sender).previousAngle;
     
+    if (direction > 0.0) {
     self.bearing += 180 * direction / M_PI;
-    
-    if (self.bearing < -0.5) {
-        self.bearing += 360;
-    }
-    else if (self.bearing > 359.5) {
-        self.bearing -= 360;
-    }
-    
     CGAffineTransform knobTransform = self.pieChart.transform;
     
     CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
     
     [self.pieChart setTransform:newKnobTransform];
     
-    progressValue = lroundf(self.bearing) / 360.0f;
-    progressBar.progress = progressValue;
     
-    if (progressBar.progress >= 0.99f) {
-        NSLog(@"Launch now!");
-        [self addParticipants:self];
+        
+       /* CGPathRef path = CGPathCreateArc(_pieChart.pieCenter, _pieChart.pieRadius, -M_PI/2, DEGREES_TO_RADIANS(self.bearing));
+        CAShapeLayer *obj = [[CAShapeLayer alloc] init];
+        [obj setPath:path];
+        [[_pieChart layer] addSublayer:obj];*/
     }
+    
+    // Adjust progress bar accordingly
+    if(!progressBar.isHidden) {
+        progressValue = lroundf(self.bearing) / 360.0f;
+        progressBar.progress = progressValue;
+        
+        
+        // Once progress bar becomes full
+        if (self.bearing >= 360.0) {
+            progressValue = 0.0;
+            progressBar.progress = progressValue;
+            [progressBar setHidden:YES];
+            
+            // Remove Touch Input to prevent errorneous spinning
+            [_pieChart setUserInteractionEnabled:NO];
+            
+            //TODO: Make sure that bearing is at 0.0 -> rotate one last time
+           
+            if (self.bearing > 360.0) {
+                CGAffineTransform knobTransform = self.pieChart.transform;
+                CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, DEGREES_TO_RADIANS(360.0 - self.bearing));
+        
+                self.bearing = 0.0;
+                [self.pieChart setTransform:newKnobTransform];
+                progressValue = self.bearing / 360.0f;
+                progressBar.progress = progressValue;
+            }
+            // Open Slice List
+            [self addParticipants:self];
+        }
+    }
+
+}
+
+- (void)resetRotationAction:(UIViewAnimationOptions) options delay:(float)delay{
+    
+    float resetSpeed = -0.1;
+    // this spin completes 360 degrees every 2 seconds
+    [UIView animateWithDuration: 0.00001f
+                          delay: delay
+                        options: options
+                     animations: ^{
+                         if (self.bearing + ((180.0f * resetSpeed) / M_PI) > 0.0) {
+                         CGAffineTransform knobTransform = self.pieChart.transform;
+                         
+                         
+                         CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, resetSpeed);
+                         
+                         self.bearing += 180.0f * resetSpeed / M_PI;
+                         [self.pieChart setTransform:newKnobTransform];
+                         progressValue = self.bearing / 360.0f;
+                         progressBar.progress = progressValue;
+                         }
+
+                     }
+                     completion: ^(BOOL finished) {
+                         if (finished) {
+                             if(self.bearing + (180.0f * resetSpeed / M_PI) > 0.0) {
+                                 [self resetRotationAction:UIViewAnimationOptionCurveEaseIn delay:0.0f];
+                             } else {
+                                
+                                 CGAffineTransform knobTransform = self.pieChart.transform;
+                                 CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, (-self.bearing * M_PI) / 180.0f);
+                                 
+                                 self.bearing = 0.0;
+                                 [self.pieChart setTransform:newKnobTransform];
+                                 progressValue = self.bearing / 360.0f;
+                                 progressBar.progress = progressValue;
+                             }
+                        }
+                     }];
+
 }
 
 @end

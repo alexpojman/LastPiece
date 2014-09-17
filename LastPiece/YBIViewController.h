@@ -26,4 +26,6 @@
 @property (strong, nonatomic) YBISwirlGestureRecognizer *swirlGestureRecognizer;
 @property (nonatomic) float bearing;
 @property (nonatomic) float pieChartRotationOffset;
+@property (nonatomic) int requiredSpinsToStart;             // The number of initial spins required to begin app for first time
+@property (nonatomic) BOOL isSpinningRight;                 // Determines if user is manually spinning circle right
 @end

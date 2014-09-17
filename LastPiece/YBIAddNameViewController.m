@@ -21,7 +21,6 @@
 
 @implementation YBIAddNameViewController
 
-//TODO is this necessary?
 @synthesize usersTable;
 @synthesize namesList;
 
@@ -65,8 +64,8 @@
     [self.usersTable registerNib:nib forCellReuseIdentifier:@"YBINameCell"];
     
     // Set Fonts for items
-    self.userTextField.font =[UIFont fontWithName:@"MyriadPro-Regular" size:14];
-    self.addUserButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
+    self.userTextField.font =[UIFont fontWithName:@"MyriadPro-Regular" size:18];
+    self.addUserButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
     
     // "Add" button should not be enabled on start
     [self.addUserButton setEnabled:NO];

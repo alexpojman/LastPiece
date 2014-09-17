@@ -19,7 +19,7 @@
 {
     // Initialization code
     self.nameField.delegate = self;
-    UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:14];
+    UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:16];
     [self.nameField setFont:font];
     
 }

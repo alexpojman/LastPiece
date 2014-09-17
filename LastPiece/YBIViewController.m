@@ -21,17 +21,6 @@
 @synthesize progressBar;
 @synthesize progressValue;
 
-static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAngle, CGFloat endAngle)
-{
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, center.x, center.y);
-    
-    CGPathAddArc(path, NULL, center.x, center.y, radius, startAngle, endAngle, 0);
-    CGPathCloseSubpath(path);
-    
-    return path;
-}
-
 - (instancetype)init
 {
     if (self) {
@@ -72,7 +61,11 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:20];
         [self.winnerLabel setFont:font];
         
+        // Start pieChart rotation bool
         _animating = NO;
+        
+        // Establish requiredSpinsToStart
+        _requiredSpinsToStart = 3;
     }
     
     return self;
@@ -83,19 +76,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     return self;
-}
-
-- (IBAction)addParticipants:(id)sender
-{
-
-    YBIAddNameViewController *advc = [[YBIAddNameViewController alloc] initWithNibName:nil bundle:nil namesList:_slices];
-    
-    advc.delegate = self;
-    
-    // Delselect the winning slice
-    self.pieChart.sliceAnimating = NO;
-    
-    [self.navigationController pushViewController:advc animated:YES];
 }
 
 
@@ -197,7 +177,13 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+#pragma mark - User Control Options
 - (IBAction) rotate:(UIButton *)sender
 {
     if([[[_rotateButton titleLabel] text] isEqual: @"GO"]) {
@@ -219,10 +205,9 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         _animating = NO;
         self.pieChart.sliceAnimating = NO;
     }
-    
-    
 }
 
+#pragma mark - Animation Methods
 - (void) fadeButtonWithOptions: (UIViewAnimationOptions) options newAlpha:(float)newAlpha buttonToDisplay:(NSString*)buttonName
 {
     [UIView animateWithDuration:.1f
@@ -276,6 +261,20 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                              }
                          }
                      }];
+}
+
+#pragma mark - Nav-Related Methods
+- (IBAction)addParticipants:(id)sender
+{
+    
+    YBIAddNameViewController *advc = [[YBIAddNameViewController alloc] initWithNibName:nil bundle:nil namesList:_slices];
+    
+    advc.delegate = self;
+    
+    // Delselect the winning slice
+    self.pieChart.sliceAnimating = NO;
+    
+    [self.navigationController pushViewController:advc animated:YES];
 }
 
 #pragma mark - ChooseWinner Methods
@@ -339,7 +338,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 // TODO: Change so that no "magic numbers" are used
 - (void)animateWinnerLabel: (UIViewAnimationOptions) options moveBehavior:(NSString *)moveBehavior
 {
-    [UIView animateWithDuration: 1.0f
+    [UIView animateWithDuration: 0.5f
                           delay: 0.0f
                         options: options
                      animations: ^{
@@ -380,25 +379,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     return self.slices[index];
 }
 
-#pragma mark - YBIPieChart Delegate
-- (void)pieChart:(YBIPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index
-{
-   // NSLog(@"will select slice at index %lu",(unsigned long)index);
-}
-- (void)pieChart:(YBIPieChart *)pieChart willDeselectSliceAtIndex:(NSUInteger)index
-{
-   // NSLog(@"will deselect slice at index %lu",(unsigned long)index);
-}
-- (void)pieChart:(YBIPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
-{
-   // NSLog(@"did deselect slice at index %lu",(unsigned long)index);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Delegation from YBIAddNameViewController
 - (void)addNameViewController:(YBIAddNameViewController *)pvc didFinishAddingNames:(NSMutableArray *)names
@@ -409,11 +389,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     }
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 
 #pragma mark - Swirl Gesture Recognizer
 - (void)rotationAction:(id)sender {
@@ -421,7 +396,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     if([(YBISwirlGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
         
         // Event only fires if user has rotated some
-        if(self.bearing > 0.0) {
+        if(self.bearing != 0.0) {
             // Insert code here for moving backwards
             [self resetRotationAction:UIViewAnimationOptionCurveEaseInOut delay:0.5f];
         }
@@ -429,82 +404,94 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         return;
     }
     
+    // Get direction of current user input
     CGFloat direction = ((YBISwirlGestureRecognizer*)sender).currentAngle
     - ((YBISwirlGestureRecognizer*)sender).previousAngle;
     
-    if (direction > 0.0) {
-    self.bearing += 180 * direction / M_PI;
-    CGAffineTransform knobTransform = self.pieChart.transform;
-    
-    CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
-    
-    [self.pieChart setTransform:newKnobTransform];
-    
-    
+    // Prevent backwards "circling"
+    if ((direction > 0.0f && direction < M_PI) || (direction < 0.0f && direction > -M_PI)) {
         
-       /* CGPathRef path = CGPathCreateArc(_pieChart.pieCenter, _pieChart.pieRadius, -M_PI/2, DEGREES_TO_RADIANS(self.bearing));
-        CAShapeLayer *obj = [[CAShapeLayer alloc] init];
-        [obj setPath:path];
-        [[_pieChart layer] addSublayer:obj];*/
-    }
-    
-    // Adjust progress bar accordingly
-    if(!progressBar.isHidden) {
-        progressValue = lroundf(self.bearing) / 360.0f;
-        progressBar.progress = progressValue;
-        
-        
-        // Once progress bar becomes full
-        if (self.bearing >= 360.0) {
-            progressValue = 0.0;
-            progressBar.progress = progressValue;
-            [progressBar setHidden:YES];
-            
-            // Remove Touch Input to prevent errorneous spinning
-            [_pieChart setUserInteractionEnabled:NO];
-            
-            //TODO: Make sure that bearing is at 0.0 -> rotate one last time
-           
-            if (self.bearing > 360.0) {
-                CGAffineTransform knobTransform = self.pieChart.transform;
-                CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, DEGREES_TO_RADIANS(360.0 - self.bearing));
-        
-                self.bearing = 0.0;
-                [self.pieChart setTransform:newKnobTransform];
-                progressValue = self.bearing / 360.0f;
-                progressBar.progress = progressValue;
+        // Once user has started spinning in a direction, lock them in
+        if(self.bearing == 0.0f) {
+            if (self.bearing+direction > 0.0f) {
+                _isSpinningRight = YES;
+            } else if (self.bearing+direction < 0.0f) {
+                _isSpinningRight = NO;
             }
-            // Open Slice List
-            [self addParticipants:self];
+        }
+        if (((_isSpinningRight && direction > 0.0f) || (!_isSpinningRight && direction < 0.0f))) {
+        self.bearing += 180 * direction / M_PI;
+        NSLog(@"%f", direction);
+        
+        CGAffineTransform knobTransform = self.pieChart.transform;
+        CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
+        
+        [self.pieChart setTransform:newKnobTransform];
+        }
+        
+        // Adjust progress bar accordingly
+        if(!progressBar.isHidden) {
+            progressValue = ABS(lroundf(self.bearing) / (360.0f * _requiredSpinsToStart));
+            progressBar.progress = progressValue;
+            
+            
+            // Once progress bar becomes full
+            if ((self.bearing >= 360.0 * _requiredSpinsToStart) || (self.bearing <= -360.0 * _requiredSpinsToStart)) {
+                progressValue = 0.0;
+                progressBar.progress = progressValue;
+                [progressBar setHidden:YES];
+                
+                // Remove Touch Input to prevent errorneous spinning
+                [_pieChart setUserInteractionEnabled:NO];
+                
+                //TODO: Make sure that bearing is at 0.0 -> rotate one last time
+               
+                    CGAffineTransform knobTransform = self.pieChart.transform;
+                    CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, DEGREES_TO_RADIANS((360.0 * _requiredSpinsToStart) - self.bearing));
+            
+                   
+                    [self.pieChart setTransform:newKnobTransform];
+                    progressValue = 0.0f;
+                    progressBar.progress = progressValue;
+                
+                // Open Slice List
+                [self addParticipants:self];
+            }
         }
     }
-
 }
 
 - (void)resetRotationAction:(UIViewAnimationOptions) options delay:(float)delay{
     
-    float resetSpeed = -0.1;
-    // this spin completes 360 degrees every 2 seconds
+    // Get resetSpeed based on direction spun
+    float resetSpeed;
+    if (self.bearing < 0.0f)
+    {
+        resetSpeed = 0.5f;
+    } else if (self.bearing > 0.0f){
+        resetSpeed = -0.5f;
+    }
+    
     [UIView animateWithDuration: 0.00001f
                           delay: delay
                         options: options
                      animations: ^{
-                         if (self.bearing + ((180.0f * resetSpeed) / M_PI) > 0.0) {
+                         if (((resetSpeed < 0.0f) && (self.bearing + ((180.0f * resetSpeed) / M_PI) > 0.0)) || ((resetSpeed > 0.0f) && (self.bearing + ((180.0f * resetSpeed) / M_PI) < 0.0))){
+                             
                          CGAffineTransform knobTransform = self.pieChart.transform;
-                         
-                         
                          CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, resetSpeed);
                          
                          self.bearing += 180.0f * resetSpeed / M_PI;
                          [self.pieChart setTransform:newKnobTransform];
-                         progressValue = self.bearing / 360.0f;
-                         progressBar.progress = progressValue;
+
                          }
 
                      }
                      completion: ^(BOOL finished) {
                          if (finished) {
-                             if(self.bearing + (180.0f * resetSpeed / M_PI) > 0.0) {
+                             progressValue = ABS(self.bearing / (360.0f * _requiredSpinsToStart));
+                             progressBar.progress = progressValue;
+                             if (((resetSpeed < 0.0f) && (self.bearing + ((180.0f * resetSpeed) / M_PI) > 0.0)) || ((resetSpeed > 0.0f) && (self.bearing + ((180.0f * resetSpeed) / M_PI) < 0.0))) {
                                  [self resetRotationAction:UIViewAnimationOptionCurveEaseIn delay:0.0f];
                              } else {
                                 
@@ -513,7 +500,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                                  
                                  self.bearing = 0.0;
                                  [self.pieChart setTransform:newKnobTransform];
-                                 progressValue = self.bearing / 360.0f;
+                                 progressValue = self.bearing / (360.0f * _requiredSpinsToStart);
                                  progressBar.progress = progressValue;
                              }
                         }

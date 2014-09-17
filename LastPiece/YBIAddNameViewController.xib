@@ -18,10 +18,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Slice Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-D5-jXF">
-                    <rect key="frame" x="20" y="77" width="232" height="30"/>
+                    <rect key="frame" x="20" y="77" width="221" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="232" id="K6Y-bb-sqs"/>
+                        <constraint firstAttribute="width" constant="221" id="Mo2-ht-X50"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -32,11 +32,8 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29E-4f-rhe">
-                    <rect key="frame" x="260" y="77" width="54" height="30"/>
+                    <rect key="frame" x="249" y="77" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="54" id="HNH-E3-FrE"/>
-                    </constraints>
                     <state key="normal" title="Add">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -56,15 +53,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="29E-4f-rhe" firstAttribute="leading" secondItem="8tI-D5-jXF" secondAttribute="trailing" constant="8" symbolic="YES" id="3a1-Af-eYC"/>
-                <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="8tI-D5-jXF" secondAttribute="top" id="7xY-Tb-Hhh"/>
                 <constraint firstItem="C0Z-8g-hL6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="9QM-if-1dH"/>
-                <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="GSV-Vd-Ykb"/>
-                <constraint firstItem="C0Z-8g-hL6" firstAttribute="top" secondItem="29E-4f-rhe" secondAttribute="bottom" constant="13" id="M7V-uu-kim"/>
+                <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="8tI-D5-jXF" secondAttribute="top" id="BE1-87-GPJ"/>
+                <constraint firstItem="29E-4f-rhe" firstAttribute="leading" secondItem="8tI-D5-jXF" secondAttribute="trailing" constant="8" symbolic="YES" id="ECJ-u9-Uhh"/>
                 <constraint firstAttribute="trailing" secondItem="C0Z-8g-hL6" secondAttribute="trailing" constant="20" id="SRj-na-4Qa"/>
-                <constraint firstAttribute="trailing" secondItem="29E-4f-rhe" secondAttribute="trailing" constant="6" id="ave-X9-XyW"/>
+                <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="bxB-BV-HAP"/>
+                <constraint firstAttribute="trailing" secondItem="29E-4f-rhe" secondAttribute="trailing" constant="31" id="g8D-zL-dNe"/>
                 <constraint firstAttribute="bottom" secondItem="C0Z-8g-hL6" secondAttribute="bottom" constant="20" id="ikG-wP-YM6"/>
                 <constraint firstItem="8tI-D5-jXF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pzz-Gm-QPQ"/>
+                <constraint firstItem="C0Z-8g-hL6" firstAttribute="top" secondItem="29E-4f-rhe" secondAttribute="bottom" constant="13" id="q0X-Ex-VSy"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

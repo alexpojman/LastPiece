@@ -77,7 +77,7 @@
     
     // Set Color for UsersTable and Main View Background
     [self.usersTable setBackgroundColor:FlatWhite];
-    [self.view setBackgroundColor:FlatMint];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
 }
 

@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *rotateButton;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UIImageView *spinToBeginLogo;
+@property (weak, nonatomic) IBOutlet UIImageView *tickerSymbol;
 @property (nonatomic) BOOL animating;
 @property (nonatomic) float progressValue;
 @property (strong, nonatomic) NSArray *currentNames;           // To Be used to pass back
@@ -28,4 +30,5 @@
 @property (nonatomic) float pieChartRotationOffset;
 @property (nonatomic) int requiredSpinsToStart;             // The number of initial spins required to begin app for first time
 @property (nonatomic) BOOL isSpinningRight;                 // Determines if user is manually spinning circle right
+@property (nonatomic) BOOL pieChartHasRelocated; // Whether or not the pie chart has been moved after initial creation
 @end

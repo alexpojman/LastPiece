@@ -132,7 +132,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         self.pieRadius = MIN(frame.size.width/2, frame.size.height/2) - 10;
         self.pieCenter = CGPointMake(frame.size.width/2, frame.size.height/2);
-        self.labelFont = [UIFont fontWithName:@"MyriadPro-Regular" size:MAX((int)self.pieRadius/10, 5)];
+        self.labelFont = [UIFont fontWithName:@"MyriadPro-BoldCond" size:MAX((int)self.pieRadius/10, 5)];
         _labelColor = [UIColor whiteColor];
         _labelRadius = _pieRadius/2;
         _selectedSliceOffsetRadius = MAX(10, _pieRadius/10);
@@ -635,7 +635,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     
     //TODO fix this so that text gets truncated
     //CGSize size = [@"0" sizeWithFont:self.labelFont];
-    CGRect textRect = [@"0" boundingRectWithSize:CGSizeMake(60, 30)
+    CGRect textRect = [@"0" boundingRectWithSize:CGSizeMake(90, 30)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{NSFontAttributeName:self.labelFont}
                                           context:nil];
@@ -661,7 +661,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     label = (pieLayer.text)?pieLayer.text:[NSString stringWithFormat:@"%@", value];
     
    // CGSize size = [label sizeWithFont:self.labelFont];
-    CGRect textRect = [label boundingRectWithSize:CGSizeMake(60, 30)
+    CGRect textRect = [label boundingRectWithSize:CGSizeMake(300 / [_pieView.layer.sublayers count], 30)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{NSFontAttributeName:self.labelFont}
                                          context:nil];

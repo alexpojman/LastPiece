@@ -12,6 +12,18 @@
 #import "YBIAddNameViewController.h"
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define paletteBlue      0x61ADFF
+#define paletteBlueAlt   0x61CDFF
+#define paletteGreen     0x8AD998
+#define paletteGreenAlt  0x8AF998
+#define paletteRed       0xFF5A4F
+#define paletteRedAlt    0xFF7A4F
+#define paletteOrange    0xFFB13F
+#define paletteOrangeAlt 0xFFD13F
+#define paletteYellow    0xFFDC50
+#define paletteYellowAlt 0xFFFC50
 
 @implementation YBIViewController
 
@@ -41,7 +53,7 @@
         self = [super initWithNibName:nibName bundle:nil];
         
         UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"Last Piece!";
+        navItem.title = @"LAST PIECE";
         
         // Create a new bar button item that will send addNewItem to BNRItemsViewController
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(addParticipants:)];
@@ -50,22 +62,45 @@
         navItem.leftBarButtonItem = bbi;
         [navItem.leftBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
         
-        [[UINavigationBar appearance] setBarTintColor:self.view.backgroundColor];
-        [self.view setBackgroundColor:FlatMint];
+        //TODO: Decide if we want border around frame
+        CGFloat borderWidth = 2.0f;
+        
+        self.view.frame = CGRectInset(self.view.frame, -borderWidth, -borderWidth);
+        self.view.layer.borderColor = UIColorFromRGB(paletteOrange).CGColor;
+        self.view.layer.borderWidth = borderWidth;
+        
+        // Set Colors
+        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setTitleTextAttributes:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          UIColorFromRGB(paletteOrange), NSForegroundColorAttributeName,
+          [UIFont fontWithName:@"MyriadPro-BoldCond" size:21],
+          NSFontAttributeName, nil]];
+        [self.view setBackgroundColor:[UIColor whiteColor]];
+        [self.progressBar setProgressTintColor:UIColorFromRGB(paletteOrange)];
+        [self.progressBar setTrackTintColor:UIColorFromRGB(paletteYellow)];
         
         // Set font for Nav Item
         [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                        [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
+
         
         // Set font for winner label
         UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:20];
         [self.winnerLabel setFont:font];
         
-        // Start pieChart rotation bool
+        // Starting pieChart bool values
         _animating = NO;
+        _pieChartHasRelocated = NO;
         
         // Establish requiredSpinsToStart
         _requiredSpinsToStart = 3;
+        
+        
+        // Add observer for returning from background
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(resetViewOnReturnFromBackground)
+                                                     name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     
     return self;
@@ -102,13 +137,21 @@
     [self.pieChart setLabelColor:[UIColor blackColor]];
     
     // Color for selecting slice
+    if ([_slices count] < 6) {
     self.sliceColors = [NSArray arrayWithObjects:
-                       [UIColor blueColor],
-                       [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                       [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                       [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                       [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
-    
+                       UIColorFromRGB(paletteBlue),
+                       UIColorFromRGB(paletteGreen),
+                       UIColorFromRGB(paletteOrange),
+                       UIColorFromRGB(paletteRed),
+                       UIColorFromRGB(paletteYellow),
+                        UIColorFromRGB(paletteBlueAlt),
+                        UIColorFromRGB(paletteGreenAlt),
+                        UIColorFromRGB(paletteOrangeAlt),
+                        UIColorFromRGB(paletteRedAlt),
+                        UIColorFromRGB(paletteYellowAlt),
+                      nil];
+    }
+
     //Initialize the YBISwirlGestureRecognizer for spinning the wheel
     self.swirlGestureRecognizer = [[YBISwirlGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(rotationAction:)];
@@ -132,12 +175,14 @@
         [self.navigationItem.leftBarButtonItem setEnabled:NO];
         [_rotateButton setEnabled:NO];
         [[_rotateButton titleLabel] setFont:[UIFont systemFontOfSize:15]];
-        [_rotateButton setTitle:@"Add at least two slices to spin!" forState:UIControlStateNormal];
-        [_rotateButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     } else {
+        if (_pieChartHasRelocated == NO) {
+            [self movePieChartConstraintWithOptions:UIViewAnimationOptionCurveEaseInOut];
+        }
         [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
         [self.navigationItem.leftBarButtonItem setEnabled:YES];
         [_piePlaceholder setHidden:YES];
+        //[_spinToBeginLogo setHidden:YES];
         [_rotateButton setHidden:YES];
         [_rotateButton setEnabled:YES];
         [_rotateButton setTitle:@"GO" forState:UIControlStateNormal];
@@ -169,6 +214,17 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
+}
+
+- (void)resetViewOnReturnFromBackground
+{
+    if([[[_rotateButton titleLabel] text] isEqual: @"STOP"]) {
+        [self.navigationItem.leftBarButtonItem setEnabled:YES];
+        [self fadeButtonWithOptions:UIViewAnimationOptionCurveEaseIn newAlpha:0 buttonToDisplay:@"GO"];
+        _animating = NO;
+        self.pieChart.sliceAnimating = NO;
+    }
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -210,7 +266,7 @@
 #pragma mark - Animation Methods
 - (void) fadeButtonWithOptions: (UIViewAnimationOptions) options newAlpha:(float)newAlpha buttonToDisplay:(NSString*)buttonName
 {
-    [UIView animateWithDuration:.1f
+    [UIView animateWithDuration:.15f
                           delay: 0.0f
                         options: options
                      animations:^{
@@ -235,7 +291,7 @@
 
 - (void) spinWithOptions: (UIViewAnimationOptions) options
 {
-    // this spin completes 360 degrees every 2 seconds
+    // Spin the pie chart
     [UIView animateWithDuration: .00001f
                           delay: 0.0f
                         options: options
@@ -260,6 +316,38 @@
                                  [self chooseIndexOfWinningSlice];
                              }
                          }
+                     }];
+}
+
+- (void) movePieChartConstraintWithOptions: (UIViewAnimationOptions) options
+{
+    [UIView animateWithDuration: 1.5f
+                          delay: 0.5f
+                        options: options
+                     animations: ^{
+                         // Move pie chart
+                         self.pieChart.transform = CGAffineTransformTranslate(self.pieChart.transform, self.pieChart.transform.tx, self.pieChart.transform.ty - 80);
+                         
+                         // Move the progress bar
+                        // self.progressBar.transform = CGAffineTransformIdentity;
+                         [self.progressBar setFrame:CGRectMake(40, 480, 250, 60)];
+                         self.progressBar.transform = CGAffineTransformTranslate(self.progressBar.transform, self.progressBar.transform.tx - 1000, self.progressBar.transform.ty);
+                         
+                         // Move Spin logo
+                         [self.spinToBeginLogo setFrame:CGRectMake(self.spinToBeginLogo.transform.tx + 160, self.spinToBeginLogo.transform.ty, self.spinToBeginLogo.frame.size.width, self.spinToBeginLogo.frame.size.height)];
+                         self.spinToBeginLogo.transform = CGAffineTransformTranslate(self.spinToBeginLogo.transform, self.spinToBeginLogo.transform.tx + 1000, self.spinToBeginLogo.transform.ty);
+                         
+                         // Move the rotate button
+                         self.rotateButton.transform = CGAffineTransformTranslate(self.rotateButton.transform, self.rotateButton.transform.tx, self.rotateButton.transform.ty - 300);
+                         
+                         // Move ticker symbol
+                         self.tickerSymbol.transform = CGAffineTransformTranslate(self.tickerSymbol.transform, self.tickerSymbol.transform.tx - 80, self.tickerSymbol.transform.ty);
+                     }
+                     completion: ^(BOOL finished) {
+                         _pieChartHasRelocated = YES;
+                         [self.progressBar setHidden:YES];
+
+                         
                      }];
 }
 
@@ -329,7 +417,14 @@
         }
     }
     _winnerLabel.Text = [NSString stringWithFormat:@"Winner is: %@", self.slices[currentPotentialWinnerIndex]];
-    // Animate winner lable
+    
+    // Set winner label background to winning slice color
+    if(currentPotentialWinnerIndex >= _sliceColors.count) {
+        _winnerLabel.backgroundColor = _sliceColors[currentPotentialWinnerIndex - _sliceColors.count];
+    } else {
+        _winnerLabel.backgroundColor = _sliceColors[currentPotentialWinnerIndex];
+    }
+    // Animate winner label
     [self animateWinnerLabel:UIViewAnimationOptionCurveEaseInOut moveBehavior:@"MoveOnScreen"];
     [self.pieChart setSliceSelectedAtIndex:currentPotentialWinnerIndex];
      
@@ -338,11 +433,10 @@
 // TODO: Change so that no "magic numbers" are used
 - (void)animateWinnerLabel: (UIViewAnimationOptions) options moveBehavior:(NSString *)moveBehavior
 {
-    [UIView animateWithDuration: 0.5f
+    [UIView animateWithDuration: 0.4f
                           delay: 0.0f
                         options: options
                      animations: ^{
-                         NSLog(@"%@, %f", moveBehavior, _winnerLabel.transform.tx);
                          if ([moveBehavior isEqual:@"MoveOnScreen"])
                          {
                              _winnerLabel.transform = CGAffineTransformTranslate(_winnerLabel.transform, 820, _winnerLabel.transform.ty);
@@ -421,7 +515,6 @@
         }
         if (((_isSpinningRight && direction > 0.0f) || (!_isSpinningRight && direction < 0.0f))) {
         self.bearing += 180 * direction / M_PI;
-        NSLog(@"%f", direction);
         
         CGAffineTransform knobTransform = self.pieChart.transform;
         CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
@@ -439,7 +532,7 @@
             if ((self.bearing >= 360.0 * _requiredSpinsToStart) || (self.bearing <= -360.0 * _requiredSpinsToStart)) {
                 progressValue = 0.0;
                 progressBar.progress = progressValue;
-                [progressBar setHidden:YES];
+                [progressBar setHidden:NO];
                 
                 // Remove Touch Input to prevent errorneous spinning
                 [_pieChart setUserInteractionEnabled:NO];

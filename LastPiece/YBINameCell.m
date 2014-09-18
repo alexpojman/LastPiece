@@ -27,23 +27,28 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.nameField.center = CGPointMake(self.nameField.center.x+OFFSET, self.nameField.center.y);
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.nameField.center = CGPointMake(self.nameField.center.x+OFFSET, self.nameField.center.y);
+}
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    self.nameField.center = CGPointMake(self.nameField.center.x-OFFSET, self.nameField.center.y);
+    
     return YES;
 }
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    self.nameField.center = CGPointMake(self.nameField.center.x-OFFSET, self.nameField.center.y);
+    
     // Notify YBIAddNameViewController if field was updated at all
     if ([_delegate respondsToSelector:@selector(nameCell:didUpdateField:)]) {
         [_delegate nameCell:self didUpdateField:self.nameField.text];

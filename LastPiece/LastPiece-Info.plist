@@ -6,6 +6,7 @@
 	<array>
 		<string>MyriadPro-Regular.otf</string>
 		<string>MyriadPro-Bold.otf</string>
+		<string>MyriadPro-BoldCond.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

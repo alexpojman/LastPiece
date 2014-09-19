@@ -32,7 +32,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29E-4f-rhe">
-                    <rect key="frame" x="249" y="77" width="40" height="30"/>
+                    <rect key="frame" x="260" y="77" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Add">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,10 +55,10 @@
             <constraints>
                 <constraint firstItem="C0Z-8g-hL6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="9QM-if-1dH"/>
                 <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="8tI-D5-jXF" secondAttribute="top" id="BE1-87-GPJ"/>
-                <constraint firstItem="29E-4f-rhe" firstAttribute="leading" secondItem="8tI-D5-jXF" secondAttribute="trailing" constant="8" symbolic="YES" id="ECJ-u9-Uhh"/>
+                <constraint firstItem="29E-4f-rhe" firstAttribute="leading" secondItem="8tI-D5-jXF" secondAttribute="trailing" constant="19" id="ECJ-u9-Uhh"/>
                 <constraint firstAttribute="trailing" secondItem="C0Z-8g-hL6" secondAttribute="trailing" constant="20" id="SRj-na-4Qa"/>
                 <constraint firstItem="29E-4f-rhe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="bxB-BV-HAP"/>
-                <constraint firstAttribute="trailing" secondItem="29E-4f-rhe" secondAttribute="trailing" constant="31" id="g8D-zL-dNe"/>
+                <constraint firstAttribute="trailing" secondItem="29E-4f-rhe" secondAttribute="trailing" constant="20" id="g8D-zL-dNe"/>
                 <constraint firstAttribute="bottom" secondItem="C0Z-8g-hL6" secondAttribute="bottom" constant="20" id="ikG-wP-YM6"/>
                 <constraint firstItem="8tI-D5-jXF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pzz-Gm-QPQ"/>
                 <constraint firstItem="C0Z-8g-hL6" firstAttribute="top" secondItem="29E-4f-rhe" secondAttribute="bottom" constant="13" id="q0X-Ex-VSy"/>

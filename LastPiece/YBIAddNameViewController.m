@@ -10,6 +10,19 @@
 #import "YBINameCell.h"
 #import "Chameleon.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define paletteBlue      0x61ADFF
+#define paletteBlueAlt   0x61CDFF
+#define paletteGreen     0x8AD998
+#define paletteGreenAlt  0x8AF998
+#define paletteRed       0xFF5A4F
+#define paletteRedAlt    0xFF7A4F
+#define paletteOrange    0xFFB13F
+#define paletteOrangeAlt 0xFFD13F
+#define paletteYellow    0xFFDC50
+#define paletteYellowAlt 0xFFFC50
+
 @interface YBIAddNameViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *addUserButton;
@@ -17,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
 @property (strong, nonatomic) NSMutableArray *namesList;
 @property (strong, nonatomic) NSIndexPath *currentIndexPaths;
+@property (strong, nonatomic) NSArray *sliceColors;
 @end
 
 @implementation YBIAddNameViewController
@@ -32,7 +46,7 @@
         
         // Custom initialization
         // Nav bar items
-        self.navigationItem.title = @"Slice List";
+        self.navigationItem.title = @"SLICE LIST";
         
         UIBarButtonItem *finishItem = [[UIBarButtonItem alloc] initWithTitle:@"Finish" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
         
@@ -49,6 +63,21 @@
                                                                         [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
         [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        
+        // Set Slice Colors -> TODO: Change to get this from parent view
+        self.sliceColors = [NSArray arrayWithObjects:
+                            UIColorFromRGB(paletteBlue),
+                            UIColorFromRGB(paletteGreen),
+                            UIColorFromRGB(paletteOrange),
+                            UIColorFromRGB(paletteRed),
+                            UIColorFromRGB(paletteYellow),
+                            UIColorFromRGB(paletteBlueAlt),
+                            UIColorFromRGB(paletteGreenAlt),
+                            UIColorFromRGB(paletteOrangeAlt),
+                            UIColorFromRGB(paletteRedAlt),
+                            UIColorFromRGB(paletteYellowAlt),
+                            nil];
+
     }
     return self;
 }
@@ -92,7 +121,8 @@
     } else {
         [self.usersTable setEditing:NO animated:YES];
     }
-    
+
+    [self updateColors];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,9 +146,11 @@
                          } completion:^(BOOL finished) {
                              
                              [self.usersTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+                             [self updateColors];
                          }];
         
     }
+    
 }
 
 - (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,7 +180,6 @@
         [self.view endEditing:YES];
         [self sendArrayNamesBack];
     }
-    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -195,14 +226,17 @@
     NSString *name = [self.namesList objectAtIndex:indexPath.row];
     cell.nameField.text = name;
 
-    // Logic for alternating row color
-    if (indexPath.row % 2 == 0) {
-        cell.backgroundColor = FlatTeal;
-        //cell.nameField.backgroundColor = FlatTeal;
-    } else {
-        cell.backgroundColor = FlatBlue;
-        //cell.nameField.backgroundColor = FlatBlue;
-    }
+    // Change Row color
+    cell.backgroundColor = FlatTeal;
+    
+     if(indexPath.row >= _sliceColors.count) {
+         cell.backgroundColor = _sliceColors[indexPath.row - _sliceColors.count];
+     } else {
+         cell.backgroundColor = _sliceColors[indexPath.row];
+     }
+
+      
+    
     return cell;
 }
 
@@ -261,5 +295,22 @@
 - (void)nameCell:(YBINameCell *)nc didUpdateField:(NSString *)updatedField
 {
    [namesList replaceObjectAtIndex:[self.usersTable indexPathForCell:nc].row withObject:updatedField];
+}
+
+- (void)updateColors
+{
+    [UIView animateWithDuration:0.25f
+                     animations:^{
+                         // Reload Data for color matching
+                         for (int i=0; i < self.namesList.count; i++) {
+                             UITableViewCell *curCell = [self.usersTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                             if(i >= _sliceColors.count) {
+                                 curCell.backgroundColor = _sliceColors[i - _sliceColors.count];
+                             } else {
+                                 curCell.backgroundColor = _sliceColors[i];
+                             }
+                         }
+                     }];
+
 }
 @end

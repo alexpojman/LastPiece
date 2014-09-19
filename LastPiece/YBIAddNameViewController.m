@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addUserButton;
 @property (weak, nonatomic) IBOutlet UITableView *usersTable;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
+@property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
 @property (strong, nonatomic) NSMutableArray *namesList;
 @property (strong, nonatomic) NSIndexPath *currentIndexPaths;
 @property (strong, nonatomic) NSArray *sliceColors;
@@ -95,6 +96,9 @@
     // Set Fonts for items
     self.userTextField.font =[UIFont fontWithName:@"MyriadPro-Regular" size:18];
     self.addUserButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
+    self.instructionLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
+    self.instructionLabel.backgroundColor = UIColorFromRGB(paletteBlue);
+    self.instructionLabel.textColor = [UIColor whiteColor];
     
     // "Add" button should not be enabled on start
     [self.addUserButton setEnabled:NO];
@@ -110,6 +114,11 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if ([usersTable numberOfRowsInSection:0] == 0) {
+        [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
+    }
+}
 #pragma mark - Row Editing
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -297,6 +306,7 @@
    [namesList replaceObjectAtIndex:[self.usersTable indexPathForCell:nc].row withObject:updatedField];
 }
 
+#pragma mark - Animation Methods
 - (void)updateColors
 {
     [UIView animateWithDuration:0.25f
@@ -312,5 +322,32 @@
                          }
                      }];
 
+}
+
+// TODO: Change so that no "magic numbers" are used
+- (void)animateInstructionLabel: (UIViewAnimationOptions) options animateOffScreen:(BOOL)animateOffScreen delay:(float)delay
+{
+    
+    [UIView animateWithDuration: 0.5f
+                          delay: delay
+                        options: options
+                     animations: ^{
+                         
+                         if (animateOffScreen == NO) {
+                             [_instructionLabel setHidden:NO];
+                             _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                         } else {
+                             [_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 820, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
+                              _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                         }
+                       
+                            /* [_winnerLabel setFrame:CGRectMake(_winnerLabel.transform.tx + 820, _winnerLabel.transform.ty, _winnerLabel.frame.size.width, _winnerLabel.frame.size.height)];
+                             _winnerLabel.transform = CGAffineTransformTranslate(_winnerLabel.transform, 820, _winnerLabel.transform.ty);*/
+                         
+                     }
+                     completion: ^(BOOL finished) {
+                         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
+                     }];
+    
 }
 @end

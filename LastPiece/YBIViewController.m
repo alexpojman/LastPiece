@@ -86,7 +86,7 @@
 
         
         // Set font for winner label
-        UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+        UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:24];
         [self.winnerLabel setFont:font];
         
         // Starting pieChart bool values
@@ -416,7 +416,7 @@
             }
         }
     }
-    _winnerLabel.Text = [NSString stringWithFormat:@"Winner is: %@", self.slices[currentPotentialWinnerIndex]];
+    _winnerLabel.Text = [NSString stringWithFormat:@"%@ is the winner!", self.slices[currentPotentialWinnerIndex]];
     
     // Set winner label background to winning slice color
     if(currentPotentialWinnerIndex >= _sliceColors.count) {

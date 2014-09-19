@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YBIAddNameViewController">
             <connections>
                 <outlet property="addUserButton" destination="29E-4f-rhe" id="oB2-em-Qyu"/>
+                <outlet property="instructionLabel" destination="OBf-Ba-Ssp" id="5Ce-xJ-Nmi"/>
                 <outlet property="userTextField" destination="8tI-D5-jXF" id="dLV-fE-XIt"/>
                 <outlet property="usersTable" destination="C0Z-8g-hL6" id="3oy-T2-b44"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -50,6 +51,14 @@
                         <outlet property="delegate" destination="-1" id="0yy-Ae-2NT"/>
                     </connections>
                 </tableView>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter in at least two &quot;slices&quot; to add to the wheel! You can edit slice names after they have been added to the Slice List." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-Ba-Ssp">
+                    <rect key="frame" x="-410" y="121" width="320" height="93"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

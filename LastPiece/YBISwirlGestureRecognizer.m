@@ -34,6 +34,7 @@
         self.state = UIGestureRecognizerStateFailed;
         return;
     }
+    
 }
 
 - (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent *)event {
@@ -48,9 +49,11 @@
     if ([self.target respondsToSelector:self.action]) {
         [self.target performSelector:self.action withObject:self];
     }
+    
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent *)event {
+  
     [super touchesEnded:touches withEvent:event];
     [super setState:UIGestureRecognizerStateEnded];
 }

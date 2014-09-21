@@ -116,6 +116,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     if ([usersTable numberOfRowsInSection:0] == 0) {
+        //TODO: this fucks with pie spin
         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
     }
 }
@@ -340,13 +341,11 @@
                              [_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 820, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
                               _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
                          }
-                       
-                            /* [_winnerLabel setFrame:CGRectMake(_winnerLabel.transform.tx + 820, _winnerLabel.transform.ty, _winnerLabel.frame.size.width, _winnerLabel.frame.size.height)];
-                             _winnerLabel.transform = CGAffineTransformTranslate(_winnerLabel.transform, 820, _winnerLabel.transform.ty);*/
-                         
                      }
                      completion: ^(BOOL finished) {
-                         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
+                         if (animateOffScreen == NO) {
+                             [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
+                         }
                      }];
     
 }

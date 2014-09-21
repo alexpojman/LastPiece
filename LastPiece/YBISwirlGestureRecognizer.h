@@ -15,5 +15,4 @@
 
 @property CGFloat currentAngle;
 @property CGFloat previousAngle;
-
 @end

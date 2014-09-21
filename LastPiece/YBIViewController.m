@@ -516,6 +516,7 @@
         if (((_isSpinningRight && direction > 0.0f) || (!_isSpinningRight && direction < 0.0f))) {
         self.bearing += 180 * direction / M_PI;
         
+      
         CGAffineTransform knobTransform = self.pieChart.transform;
         CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
         

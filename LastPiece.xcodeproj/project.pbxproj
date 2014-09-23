@@ -13,6 +13,7 @@
 		ED0B361019CA79C4006D5066 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */; };
 		ED0B361319CA7D41006D5066 /* spinToBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B361119CA7D41006D5066 /* spinToBegin.png */; };
 		ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B361219CA7D41006D5066 /* splashCircle.png */; };
+		ED0B361719CF89D1006D5066 /* RDDRotationControlSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */; };
 		ED2FA2C619C73AA000F88993 /* YBIViewController3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */; };
 		ED2FA2D219C8BAA900F88993 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D119C8BAA900F88993 /* go.png */; };
 		ED2FA2D419C8BADF00F88993 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D319C8BADF00F88993 /* stop.png */; };
@@ -38,6 +39,7 @@
 		ED9F9CE31989AD6300D754EA /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CDD1989AD6300D754EA /* NSArray+Chameleon.m */; };
 		ED9F9CE41989AD6300D754EA /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CDF1989AD6300D754EA /* UIColor+Chameleon.m */; };
 		ED9F9CE51989AD6300D754EA /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9F9CE11989AD6300D754EA /* UIViewController+Chameleon.m */; };
+		EDB5B05C19D1100D006E4C67 /* Ticker.png in Resources */ = {isa = PBXBuildFile; fileRef = EDB5B05B19D1100D006E4C67 /* Ticker.png */; };
 		EDBD12D7199555D300E5DE0F /* YBIAddNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */; };
 		EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */; };
 		EDBD12DC1995654000E5DE0F /* YBINameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12DA1995654000E5DE0F /* YBINameCell.m */; };
@@ -67,6 +69,8 @@
 		ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
 		ED0B361119CA7D41006D5066 /* spinToBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinToBegin.png; sourceTree = "<group>"; };
 		ED0B361219CA7D41006D5066 /* splashCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashCircle.png; sourceTree = "<group>"; };
+		ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDRotationControlSurface.h; sourceTree = "<group>"; };
+		ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDRotationControlSurface.m; sourceTree = "<group>"; };
 		ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIViewController3.xib; sourceTree = "<group>"; };
 		ED2FA2D119C8BAA900F88993 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
 		ED2FA2D319C8BADF00F88993 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		ED9F9CDF1989AD6300D754EA /* UIColor+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Chameleon.m"; sourceTree = "<group>"; };
 		ED9F9CE01989AD6300D754EA /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
 		ED9F9CE11989AD6300D754EA /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		EDB5B05B19D1100D006E4C67 /* Ticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ticker.png; sourceTree = "<group>"; };
 		EDBD12D4199555D300E5DE0F /* YBIAddNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIAddNameViewController.h; sourceTree = "<group>"; };
 		EDBD12D5199555D300E5DE0F /* YBIAddNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIAddNameViewController.m; sourceTree = "<group>"; };
 		EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIAddNameViewController.xib; sourceTree = "<group>"; };
@@ -185,11 +190,14 @@
 		ED9F9CA419888B8E00D754EA /* LastPiece */ = {
 			isa = PBXGroup;
 			children = (
+				ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */,
+				ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */,
 				ED0B361119CA7D41006D5066 /* spinToBegin.png */,
 				ED0B361219CA7D41006D5066 /* splashCircle.png */,
 				EDE6086719C1EE0C002C507E /* left arrow.jpeg */,
 				ED2FA2D119C8BAA900F88993 /* go.png */,
 				ED2FA2D319C8BADF00F88993 /* stop.png */,
+				EDB5B05B19D1100D006E4C67 /* Ticker.png */,
 				ED0B360619C902C6006D5066 /* LP_Initial_Circle.png */,
 				ED783FED19C681CB0084DCE0 /* ticker-a.png */,
 				EDE6086F19C26009002C507E /* TPKeyboardAvoidingScrollView.h */,
@@ -350,6 +358,7 @@
 				ED0B360D19C9CB3D006D5066 /* iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png in Resources */,
 				ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */,
 				ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */,
+				EDB5B05C19D1100D006E4C67 /* Ticker.png in Resources */,
 				ED9F9CA919888B8E00D754EA /* InfoPlist.strings in Resources */,
 				ED9F9CD61988967B00D754EA /* YBIViewController.xib in Resources */,
 				ED0B360719C902C6006D5066 /* LP_Initial_Circle.png in Resources */,
@@ -380,6 +389,7 @@
 			files = (
 				ED9F9CAB19888B8E00D754EA /* main.m in Sources */,
 				ED9F9CE41989AD6300D754EA /* UIColor+Chameleon.m in Sources */,
+				ED0B361719CF89D1006D5066 /* RDDRotationControlSurface.m in Sources */,
 				ED9F9CD51988967B00D754EA /* YBIViewController.m in Sources */,
 				EDE6086E19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				ED9F9CE51989AD6300D754EA /* UIViewController+Chameleon.m in Sources */,

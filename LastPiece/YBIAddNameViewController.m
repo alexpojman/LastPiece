@@ -99,6 +99,7 @@
     self.instructionLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
     self.instructionLabel.backgroundColor = UIColorFromRGB(paletteBlue);
     self.instructionLabel.textColor = [UIColor whiteColor];
+    self.instructionLabel.numberOfLines = 0;
     
     // "Add" button should not be enabled on start
     [self.addUserButton setEnabled:NO];
@@ -112,11 +113,14 @@
     [self.usersTable setBackgroundColor:FlatWhite];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    // Set up Gesture for dismissing instruction
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissInstruction)];
+    [_instructionLabel addGestureRecognizer:singleFingerTap];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     if ([usersTable numberOfRowsInSection:0] == 0) {
-        //TODO: this fucks with pie spin
         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
     }
 }
@@ -329,7 +333,7 @@
 - (void)animateInstructionLabel: (UIViewAnimationOptions) options animateOffScreen:(BOOL)animateOffScreen delay:(float)delay
 {
     
-    [UIView animateWithDuration: 0.5f
+    [UIView animateWithDuration: 0.25f
                           delay: delay
                         options: options
                      animations: ^{
@@ -344,9 +348,18 @@
                      }
                      completion: ^(BOOL finished) {
                          if (animateOffScreen == NO) {
-                             [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
+                             //[self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
+                         } else {
+                             // Select userTextField
+                             [_userTextField setEnabled:YES];
+                             [_userTextField becomeFirstResponder];
                          }
                      }];
     
+}
+
+- (void)dismissInstruction
+{
+    [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.0f];
 }
 @end

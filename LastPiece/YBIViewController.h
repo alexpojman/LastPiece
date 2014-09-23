@@ -10,7 +10,9 @@
 #import "YBIPieChart.h"
 #import "YBIAddNameViewController.h"
 #import "YBISwirlGestureRecognizer.h"
-@interface YBIViewController : UIViewController <YBIPieChartDelegate, YBIPieChartDataSource, YBIAddNameViewControllerDelegate, YBISwirlGestureRecognizerDelegate>
+#import "RDDRotationControlSurface.h"
+
+@interface YBIViewController : UIViewController <YBIPieChartDelegate, YBIPieChartDataSource, YBIAddNameViewControllerDelegate, YBISwirlGestureRecognizerDelegate, RDDRotationControlSurfaceDelegate>
 
 
 @property (strong, nonatomic) IBOutlet YBIPieChart *pieChart;
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIImageView *spinToBeginLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *tickerSymbol;
+@property (weak, nonatomic) IBOutlet RDDRotationControlSurface *rotationControl;
 @property (nonatomic) BOOL animating;
 @property (nonatomic) float progressValue;
 @property (strong, nonatomic) NSArray *currentNames;           // To Be used to pass back

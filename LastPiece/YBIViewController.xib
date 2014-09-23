@@ -10,6 +10,7 @@
                 <outlet property="piePlaceholder" destination="TN8-pZ-gsB" id="GOr-oO-w7c"/>
                 <outlet property="progressBar" destination="S4g-RZ-nr9" id="qjQ-3w-G5d"/>
                 <outlet property="rotateButton" destination="ogG-7w-I9a" id="RTf-33-CYi"/>
+                <outlet property="rotationControl" destination="jBc-kf-9Tg" id="5pn-mv-Ihm"/>
                 <outlet property="spinToBeginLogo" destination="ytB-1X-QZx" id="syB-DO-khg"/>
                 <outlet property="tickerSymbol" destination="YNM-sf-WrG" id="hEv-aJ-Khl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -45,7 +46,15 @@
                         <action selector="rotate:" destination="-1" eventType="touchUpInside" id="0dM-dK-kgp"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ticker-a.png" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-sf-WrG">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBc-kf-9Tg" customClass="RDDRotationControlSurface">
+                    <rect key="frame" x="20" y="159" width="280" height="280"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="4Hp-Tx-Tda"/>
+                    </connections>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ticker.png" translatesAutoresizingMaskIntoConstraints="NO" id="YNM-sf-WrG">
                     <rect key="frame" x="325" y="215" width="33" height="86"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -104,8 +113,8 @@
         </navigationController>
     </objects>
     <resources>
+        <image name="Ticker.png" width="210" height="92"/>
         <image name="spinToBegin.png" width="367" height="152"/>
         <image name="splashCircle.png" width="413" height="405"/>
-        <image name="ticker-a.png" width="217" height="86"/>
     </resources>
 </document>

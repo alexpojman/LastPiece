@@ -485,9 +485,44 @@
 
 
 #pragma mark - Swirl Gesture Recognizer
+
+- (void)rotationDidChangeByAngle:(CGFloat)angle {
+    
+    self.pieChart.transform = CGAffineTransformRotate(self.pieChart.transform, DEGREES_TO_RADIANS(-angle));
+    self.bearing += (-angle);
+    
+    //TODO fix this, still a bit weird
+  
+
+    progressValue = ABS(lroundf(self.bearing)) / (360.0f * _requiredSpinsToStart);
+    
+    NSLog(@"%f", progressValue);
+    
+    progressBar.progress = progressValue;
+    
+    if ((self.bearing >= 360.0f * _requiredSpinsToStart) || (self.bearing <= -360.0f * _requiredSpinsToStart)) {
+        [_rotationControl endDeceleration];
+    }
+}
+
+- (void)decelerationDidEnd {
+    if((self.bearing >= 360.0f * _requiredSpinsToStart) || (self.bearing <= -360.0f * _requiredSpinsToStart)) {
+        // Remove Touch Input to prevent errorneous spinning
+        [_rotationControl setUserInteractionEnabled:NO];
+        
+        CGAffineTransform knobTransform = self.pieChart.transform;
+        CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, DEGREES_TO_RADIANS((360.0 * _requiredSpinsToStart) - self.bearing));
+     
+     
+        [self.pieChart setTransform:newKnobTransform];
+    
+        [self addParticipants:self];
+    }
+}
+
 - (void)rotationAction:(id)sender {
     
-    if([(YBISwirlGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+   /* if([(YBISwirlGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
         
         // Event only fires if user has rotated some
         if(self.bearing != 0.0) {
@@ -552,7 +587,7 @@
                 [self addParticipants:self];
             }
         }
-    }
+    }*/
 }
 
 - (void)resetRotationAction:(UIViewAnimationOptions) options delay:(float)delay{

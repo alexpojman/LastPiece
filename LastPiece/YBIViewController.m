@@ -60,7 +60,7 @@
         
         // Left Bar Navigation Item Setup
         navItem.leftBarButtonItem = bbi;
-        [navItem.leftBarButtonItem setTintColor:ContrastColorOf(ComplementaryColorOf(self.view.backgroundColor))];
+        //[navItem.leftBarButtonItem setTintColor:[UICOl]];
         
         //TODO: Decide if we want border around frame
         CGFloat borderWidth = 2.0f;
@@ -94,7 +94,7 @@
         _pieChartHasRelocated = NO;
         
         // Establish requiredSpinsToStart
-        _requiredSpinsToStart = 3;
+        _requiredSpinsToStart = 4;
         
         
         // Add observer for returning from background
@@ -152,11 +152,7 @@
                       nil];
     }
 
-    //Initialize the YBISwirlGestureRecognizer for spinning the wheel
-    self.swirlGestureRecognizer = [[YBISwirlGestureRecognizer alloc]
-                                   initWithTarget:self action:@selector(rotationAction:)];
-    [self.swirlGestureRecognizer setDelegate:self];
-    [self.pieChart addGestureRecognizer:self.swirlGestureRecognizer];
+
     
 }
 - (void)viewDidUnload
@@ -326,22 +322,23 @@
                         options: options
                      animations: ^{
                          // Move pie chart
-                         self.pieChart.transform = CGAffineTransformTranslate(self.pieChart.transform, self.pieChart.transform.tx, self.pieChart.transform.ty - 80);
+                         //TODO: update variables instead of magic numbers
+                         [self.pieChart setFrame:CGRectMake(160, 450, 280, 280)];
+                         self.pieChart.transform = CGAffineTransformTranslate(self.pieChart.transform, self.pieChart.transform.tx, self.pieChart.transform.ty - 130);
                          
                          // Move the progress bar
-                        // self.progressBar.transform = CGAffineTransformIdentity;
-                         [self.progressBar setFrame:CGRectMake(40, 480, 250, 60)];
+                         [self.progressBar setFrame:CGRectMake(40, 495, 250, 60)];
                          self.progressBar.transform = CGAffineTransformTranslate(self.progressBar.transform, self.progressBar.transform.tx - 1000, self.progressBar.transform.ty);
                          
                          // Move Spin logo
-                         [self.spinToBeginLogo setFrame:CGRectMake(self.spinToBeginLogo.transform.tx + 160, self.spinToBeginLogo.transform.ty, self.spinToBeginLogo.frame.size.width, self.spinToBeginLogo.frame.size.height)];
-                         self.spinToBeginLogo.transform = CGAffineTransformTranslate(self.spinToBeginLogo.transform, self.spinToBeginLogo.transform.tx + 1000, self.spinToBeginLogo.transform.ty);
+                         [self.spinToBeginLogo setFrame:CGRectMake(self.spinToBeginLogo.transform.tx + 160, self.spinToBeginLogo.transform.ty - 200, self.spinToBeginLogo.frame.size.width, self.spinToBeginLogo.frame.size.height)];
+                         self.spinToBeginLogo.transform = CGAffineTransformTranslate(self.spinToBeginLogo.transform, self.spinToBeginLogo.transform.tx, self.spinToBeginLogo.transform.ty - 2000);
                          
                          // Move the rotate button
                          self.rotateButton.transform = CGAffineTransformTranslate(self.rotateButton.transform, self.rotateButton.transform.tx, self.rotateButton.transform.ty - 300);
                          
                          // Move ticker symbol
-                         self.tickerSymbol.transform = CGAffineTransformTranslate(self.tickerSymbol.transform, self.tickerSymbol.transform.tx - 80, self.tickerSymbol.transform.ty);
+                         self.tickerSymbol.transform = CGAffineTransformTranslate(self.tickerSymbol.transform, self.tickerSymbol.transform.tx - 90, self.tickerSymbol.transform.ty);
                      }
                      completion: ^(BOOL finished) {
                          _pieChartHasRelocated = YES;
@@ -416,7 +413,14 @@
             }
         }
     }
-    _winnerLabel.Text = [NSString stringWithFormat:@"%@ is the winner!", self.slices[currentPotentialWinnerIndex]];
+    
+    //Truncate currentPotentialWinner to avoid cutting off winnerLabel text
+    NSString *winnerText = self.slices[currentPotentialWinnerIndex];
+    
+    if ([self.slices[currentPotentialWinnerIndex] length] > 10) {
+        winnerText = [NSString stringWithFormat:@"%@...",[self.slices[currentPotentialWinnerIndex] substringToIndex:10]];
+    }
+    _winnerLabel.Text = [NSString stringWithFormat:@"%@ is the winner!", winnerText];
     
     // Set winner label background to winning slice color
     if(currentPotentialWinnerIndex >= _sliceColors.count) {
@@ -453,8 +457,8 @@
                          
                          }
                      }];
-
 }
+
 #pragma mark - YBIPieChart Data Source
 
 - (NSUInteger)numberOfSlicesInPieChart:(YBIPieChart *)pieChart
@@ -496,8 +500,6 @@
 
     progressValue = ABS(lroundf(self.bearing)) / (360.0f * _requiredSpinsToStart);
     
-    NSLog(@"%f", progressValue);
-    
     progressBar.progress = progressValue;
     
     if ((self.bearing >= 360.0f * _requiredSpinsToStart) || (self.bearing <= -360.0f * _requiredSpinsToStart)) {
@@ -518,76 +520,6 @@
     
         [self addParticipants:self];
     }
-}
-
-- (void)rotationAction:(id)sender {
-    
-   /* if([(YBISwirlGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
-        
-        // Event only fires if user has rotated some
-        if(self.bearing != 0.0) {
-            // Insert code here for moving backwards
-            [self resetRotationAction:UIViewAnimationOptionCurveEaseInOut delay:0.5f];
-        }
-        
-        return;
-    }
-    
-    // Get direction of current user input
-    CGFloat direction = ((YBISwirlGestureRecognizer*)sender).currentAngle
-    - ((YBISwirlGestureRecognizer*)sender).previousAngle;
-    
-    // Prevent backwards "circling"
-    if ((direction > 0.0f && direction < M_PI) || (direction < 0.0f && direction > -M_PI)) {
-        
-        // Once user has started spinning in a direction, lock them in
-        if(self.bearing == 0.0f) {
-            if (self.bearing+direction > 0.0f) {
-                _isSpinningRight = YES;
-            } else if (self.bearing+direction < 0.0f) {
-                _isSpinningRight = NO;
-            }
-        }
-        if (((_isSpinningRight && direction > 0.0f) || (!_isSpinningRight && direction < 0.0f))) {
-        self.bearing += 180 * direction / M_PI;
-        
-      
-        CGAffineTransform knobTransform = self.pieChart.transform;
-        CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, direction);
-        
-        [self.pieChart setTransform:newKnobTransform];
-        }
-        
-        // Adjust progress bar accordingly
-        if(!progressBar.isHidden) {
-            progressValue = ABS(lroundf(self.bearing) / (360.0f * _requiredSpinsToStart));
-            progressBar.progress = progressValue;
-            
-            
-            // Once progress bar becomes full
-            if ((self.bearing >= 360.0 * _requiredSpinsToStart) || (self.bearing <= -360.0 * _requiredSpinsToStart)) {
-                progressValue = 0.0;
-                progressBar.progress = progressValue;
-                [progressBar setHidden:NO];
-                
-                // Remove Touch Input to prevent errorneous spinning
-                [_pieChart setUserInteractionEnabled:NO];
-                
-                //TODO: Make sure that bearing is at 0.0 -> rotate one last time
-               
-                    CGAffineTransform knobTransform = self.pieChart.transform;
-                    CGAffineTransform newKnobTransform = CGAffineTransformRotate(knobTransform, DEGREES_TO_RADIANS((360.0 * _requiredSpinsToStart) - self.bearing));
-            
-                   
-                    [self.pieChart setTransform:newKnobTransform];
-                    progressValue = 0.0f;
-                    progressBar.progress = progressValue;
-                
-                // Open Slice List
-                [self addParticipants:self];
-            }
-        }
-    }*/
 }
 
 - (void)resetRotationAction:(UIViewAnimationOptions) options delay:(float)delay{

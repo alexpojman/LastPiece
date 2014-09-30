@@ -33,5 +33,6 @@
 @property (nonatomic) float pieChartRotationOffset;
 @property (nonatomic) int requiredSpinsToStart;             // The number of initial spins required to begin app for first time
 @property (nonatomic) BOOL isSpinningRight;                 // Determines if user is manually spinning circle right
-@property (nonatomic) BOOL pieChartHasRelocated; // Whether or not the pie chart has been moved after initial creation
+@property (nonatomic) BOOL pieChartHasRelocated;            // Whether or not the pie chart has been moved after initial creation
+@property (nonatomic) NSInteger pieAnimationValue;          // The amount to move pieChart via animation (depends on screen size)
 @end

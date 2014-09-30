@@ -171,7 +171,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         CGRect bounds = [[self layer] bounds];
         self.pieRadius = MIN(bounds.size.width/2, bounds.size.height/2) - 10;
         self.pieCenter = CGPointMake(bounds.size.width/2, bounds.size.height/2);
-        self.labelFont = [UIFont fontWithName:@"MyriadPro-Regular" size:MAX((int)self.pieRadius/10, 5)];
+        self.labelFont = [UIFont fontWithName:@"MyriadPro-Regular" size:MAX((int)self.pieRadius/8, 10)];
         //self.labelFont = [UIFont boldSystemFontOfSize:MAX((int)self.pieRadius/10, 5)];
         _labelColor = [UIColor whiteColor];
         _labelRadius = _pieRadius * 0.8;
@@ -625,7 +625,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     [textLayer setAnchorPoint:CGPointMake(0.5, 0.5)];
     [textLayer setAlignmentMode:kCAAlignmentCenter];
     [textLayer setBackgroundColor:[UIColor clearColor].CGColor];
-    [textLayer setForegroundColor:self.labelColor.CGColor];
+    [textLayer setForegroundColor:[UIColor whiteColor].CGColor];
     if (self.labelShadowColor) {
         [textLayer setShadowColor:self.labelShadowColor.CGColor];
         [textLayer setShadowOffset:CGSizeZero];
@@ -634,7 +634,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     }
     
     //TODO fix this so that text gets truncated
-    //CGSize size = [@"0" sizeWithFont:self.labelFont];
     CGRect textRect = [@"0" boundingRectWithSize:CGSizeMake(90, 30)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{NSFontAttributeName:self.labelFont}
@@ -645,6 +644,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     [CATransaction setDisableActions:YES];
     [textLayer setFrame:CGRectMake(0, 0, size.width, size.height)];
     [textLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(0)), _pieCenter.y + (_labelRadius * sin(0)))];
+    
     [CATransaction setDisableActions:NO];
     [pieLayer addSublayer:textLayer];
     
@@ -660,8 +660,13 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     // Here is where label gets assigned
     label = (pieLayer.text)?pieLayer.text:[NSString stringWithFormat:@"%@", value];
     
-   // CGSize size = [label sizeWithFont:self.labelFont];
-    CGRect textRect = [label boundingRectWithSize:CGSizeMake(300 / [_pieView.layer.sublayers count], 30)
+    NSUInteger dividingValue;
+    if ([_pieView.layer.sublayers count] < 3) {
+        dividingValue = 3;
+    } else {
+        dividingValue = [_pieView.layer.sublayers count];
+    }
+    CGRect textRect = [label boundingRectWithSize:CGSizeMake(300 / dividingValue, 30)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{NSFontAttributeName:self.labelFont}
                                          context:nil];

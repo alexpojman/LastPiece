@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YBIAddNameViewController">
             <connections>
                 <outlet property="addUserButton" destination="29E-4f-rhe" id="oB2-em-Qyu"/>
-                <outlet property="instructionLabel" destination="OBf-Ba-Ssp" id="5Ce-xJ-Nmi"/>
+                <outlet property="backgroundFilterView" destination="fjB-cy-lC2" id="k8U-rw-gMG"/>
+                <outlet property="gotItButton" destination="RIa-p9-R6X" id="RPs-H4-e98"/>
+                <outlet property="instructionLabel" destination="jKt-5z-368" id="U8P-ZP-Ier"/>
                 <outlet property="userTextField" destination="8tI-D5-jXF" id="dLV-fE-XIt"/>
                 <outlet property="usersTable" destination="C0Z-8g-hL6" id="3oy-T2-b44"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -18,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Slice Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-D5-jXF">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Slice Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-D5-jXF">
                     <rect key="frame" x="20" y="77" width="221" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -51,21 +53,33 @@
                         <outlet property="delegate" destination="-1" id="0yy-Ae-2NT"/>
                     </connections>
                 </tableView>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-Ba-Ssp">
-                    <rect key="frame" x="-410" y="65" width="320" height="200"/>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blurred_SliceList.png" translatesAutoresizingMaskIntoConstraints="NO" id="fjB-cy-lC2">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">Add at least two "slice" names to make up the pie!
-
-Slices can be edited from the Slice List after they have been added.
-
-
-[Tap to Dismiss]
-</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </imageView>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jKt-5z-368" userLabel="Popover Container">
+                    <rect key="frame" x="-389" y="136" width="278" height="167"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popover.png" translatesAutoresizingMaskIntoConstraints="NO" id="UmT-Cg-Ilu" userLabel="Image View - Popover.png">
+                            <rect key="frame" x="0.0" y="0.0" width="278" height="167"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIa-p9-R6X" userLabel="Button - Got it">
+                            <rect key="frame" x="105" y="113" width="68" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="0.65672939720000001" blue="0.091207409079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Got It!">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissInstructionLabel:" destination="-1" eventType="touchUpInside" id="4iN-Ek-umB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -88,4 +102,8 @@ Slices can be edited from the Slice List after they have been added.
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="blurred_SliceList.png" width="640" height="1136"/>
+        <image name="popover.png" width="404" height="224"/>
+    </resources>
 </document>

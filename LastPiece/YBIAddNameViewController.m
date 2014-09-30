@@ -28,7 +28,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *addUserButton;
 @property (weak, nonatomic) IBOutlet UITableView *usersTable;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
-@property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
+@property (weak, nonatomic) IBOutlet UIView *instructionLabel;
+@property (weak, nonatomic) IBOutlet UIView *backgroundFilterView;
+@property (weak, nonatomic) IBOutlet UIButton *gotItButton;
 @property (strong, nonatomic) NSMutableArray *namesList;
 @property (strong, nonatomic) NSIndexPath *currentIndexPaths;
 @property (strong, nonatomic) NSArray *sliceColors;
@@ -96,13 +98,21 @@
     // Set Fonts for items
     self.userTextField.font =[UIFont fontWithName:@"MyriadPro-Regular" size:18];
     self.addUserButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
-    self.instructionLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
-    self.instructionLabel.backgroundColor = UIColorFromRGB(paletteBlue);
-    self.instructionLabel.textColor = [UIColor whiteColor];
-    self.instructionLabel.numberOfLines = 0;
+    
+    // "Got It!" button style
+    self.gotItButton.titleLabel.font = [UIFont fontWithName:@"MyriadPro-BoldCond" size:18];
+    self.gotItButton.titleLabel.textColor = [UIColor whiteColor];
+    self.gotItButton.layer.cornerRadius = 2;
+    self.gotItButton.layer.borderWidth = 1;
+    self.gotItButton.layer.borderColor = (__bridge CGColorRef)(UIColorFromRGB(paletteOrange));
     
     // "Add" button should not be enabled on start
     [self.addUserButton setEnabled:NO];
+    
+    // Make sure userTextField is not enabled at first until instructionLabel is dismissed
+    if ([self.namesList count] == 0) {
+        [_userTextField setEnabled:NO];
+    }
     
     // Initialized tableView with currentList
     for (int i=0; i < [self.namesList count]; i++) {
@@ -113,9 +123,6 @@
     [self.usersTable setBackgroundColor:FlatWhite];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    // Set up Gesture for dismissing instruction
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissInstruction)];
-    [_instructionLabel addGestureRecognizer:singleFingerTap];
     
 }
 
@@ -124,6 +131,11 @@
         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
     }
 }
+
+- (IBAction)dismissInstructionLabel:(id)sender {
+     [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.0f];
+}
+
 #pragma mark - Row Editing
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -341,18 +353,27 @@
                          if (animateOffScreen == NO) {
                              [_instructionLabel setHidden:NO];
                              _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                             
+                             // Change filter alpha
+                             _backgroundFilterView.alpha = 1.0;
+        
                          } else {
                              [_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 820, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
                               _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                             
+                             // Change filter alpha
+                             _backgroundFilterView.alpha = 0.0;
+                           [self.navigationController.navigationBar setHidden:NO];
+                           
                          }
                      }
                      completion: ^(BOOL finished) {
-                         if (animateOffScreen == NO) {
-                             //[self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:3.0f];
-                         } else {
+                         if (animateOffScreen == YES) {
                              // Select userTextField
                              [_userTextField setEnabled:YES];
                              [_userTextField becomeFirstResponder];
+                         } else {
+                              [self.navigationController.navigationBar setHidden:YES];
                          }
                      }];
     

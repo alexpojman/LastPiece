@@ -11,7 +11,6 @@
 		ED0B360B19C9C84F006D5066 /* IMG_0486.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360A19C9C84F006D5066 /* IMG_0486.png */; };
 		ED0B360D19C9CB3D006D5066 /* iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360C19C9CB3D006D5066 /* iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png */; };
 		ED0B361019CA79C4006D5066 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */; };
-		ED0B361319CA7D41006D5066 /* spinToBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B361119CA7D41006D5066 /* spinToBegin.png */; };
 		ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B361219CA7D41006D5066 /* splashCircle.png */; };
 		ED0B361719CF89D1006D5066 /* RDDRotationControlSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */; };
 		ED2FA2C619C73AA000F88993 /* YBIViewController3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2C519C73AA000F88993 /* YBIViewController3.xib */; };
@@ -20,6 +19,10 @@
 		ED2FA2D619C8C1CE00F88993 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D519C8C0E300F88993 /* MyriadPro-Regular.otf */; };
 		ED2FA2D819C8C42E00F88993 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D719C8C40D00F88993 /* MyriadPro-Bold.otf */; };
 		ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */ = {isa = PBXBuildFile; fileRef = ED783FED19C681CB0084DCE0 /* ticker-a.png */; };
+		ED8232AE19D60E5900AF9866 /* Ticker_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232AD19D60E5900AF9866 /* Ticker_v3.png */; };
+		ED8232B019D6169300AF9866 /* blurred_SliceList.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232AF19D6169300AF9866 /* blurred_SliceList.png */; };
+		ED8232B219D98D3D00AF9866 /* spinToBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232B119D98D3D00AF9866 /* spinToBegin.png */; };
+		ED8232B619DA516600AF9866 /* popover.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232B519DA516600AF9866 /* popover.png */; };
 		ED9F9C9F19888B8E00D754EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9C9E19888B8E00D754EA /* Foundation.framework */; };
 		ED9F9CA119888B8E00D754EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */; };
 		ED9F9CA319888B8E00D754EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA219888B8E00D754EA /* UIKit.framework */; };
@@ -67,7 +70,6 @@
 		ED0B360C19C9CB3D006D5066 /* iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png"; sourceTree = "<group>"; };
 		ED0B360E19CA7991006D5066 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
 		ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
-		ED0B361119CA7D41006D5066 /* spinToBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinToBegin.png; sourceTree = "<group>"; };
 		ED0B361219CA7D41006D5066 /* splashCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashCircle.png; sourceTree = "<group>"; };
 		ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDRotationControlSurface.h; sourceTree = "<group>"; };
 		ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDRotationControlSurface.m; sourceTree = "<group>"; };
@@ -77,6 +79,10 @@
 		ED2FA2D519C8C0E300F88993 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		ED2FA2D719C8C40D00F88993 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
 		ED783FED19C681CB0084DCE0 /* ticker-a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ticker-a.png"; sourceTree = "<group>"; };
+		ED8232AD19D60E5900AF9866 /* Ticker_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ticker_v3.png; sourceTree = "<group>"; };
+		ED8232AF19D6169300AF9866 /* blurred_SliceList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurred_SliceList.png; sourceTree = "<group>"; };
+		ED8232B119D98D3D00AF9866 /* spinToBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinToBegin.png; sourceTree = "<group>"; };
+		ED8232B519DA516600AF9866 /* popover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popover.png; sourceTree = "<group>"; };
 		ED9F9C9B19888B8E00D754EA /* LastPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9F9C9E19888B8E00D754EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,14 +198,17 @@
 			children = (
 				ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */,
 				ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */,
-				ED0B361119CA7D41006D5066 /* spinToBegin.png */,
 				ED0B361219CA7D41006D5066 /* splashCircle.png */,
+				ED8232B119D98D3D00AF9866 /* spinToBegin.png */,
 				EDE6086719C1EE0C002C507E /* left arrow.jpeg */,
 				ED2FA2D119C8BAA900F88993 /* go.png */,
 				ED2FA2D319C8BADF00F88993 /* stop.png */,
 				EDB5B05B19D1100D006E4C67 /* Ticker.png */,
 				ED0B360619C902C6006D5066 /* LP_Initial_Circle.png */,
 				ED783FED19C681CB0084DCE0 /* ticker-a.png */,
+				ED8232AD19D60E5900AF9866 /* Ticker_v3.png */,
+				ED8232B519DA516600AF9866 /* popover.png */,
+				ED8232AF19D6169300AF9866 /* blurred_SliceList.png */,
 				EDE6086F19C26009002C507E /* TPKeyboardAvoidingScrollView.h */,
 				EDE6087019C26009002C507E /* TPKeyboardAvoidingScrollView.m */,
 				EDE6086C19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
@@ -352,11 +361,13 @@
 			files = (
 				ED2FA2D819C8C42E00F88993 /* MyriadPro-Bold.otf in Resources */,
 				ED2FA2D619C8C1CE00F88993 /* MyriadPro-Regular.otf in Resources */,
+				ED8232B219D98D3D00AF9866 /* spinToBegin.png in Resources */,
+				ED8232B619DA516600AF9866 /* popover.png in Resources */,
 				ED0B361019CA79C4006D5066 /* MyriadPro-BoldCond.otf in Resources */,
-				ED0B361319CA7D41006D5066 /* spinToBegin.png in Resources */,
 				EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */,
 				ED0B360D19C9CB3D006D5066 /* iOS Simulator Screen shot Sep 17, 2014, 8.58.52 AM.png in Resources */,
 				ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */,
+				ED8232AE19D60E5900AF9866 /* Ticker_v3.png in Resources */,
 				ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */,
 				EDB5B05C19D1100D006E4C67 /* Ticker.png in Resources */,
 				ED9F9CA919888B8E00D754EA /* InfoPlist.strings in Resources */,
@@ -368,6 +379,7 @@
 				ED2FA2D219C8BAA900F88993 /* go.png in Resources */,
 				EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */,
 				ED0B360B19C9C84F006D5066 /* IMG_0486.png in Resources */,
+				ED8232B019D6169300AF9866 /* blurred_SliceList.png in Resources */,
 				ED9F9CB119888B8E00D754EA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

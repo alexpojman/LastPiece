@@ -80,7 +80,7 @@
                             UIColorFromRGB(paletteRedAlt),
                             UIColorFromRGB(paletteYellowAlt),
                             nil];
-
+        
     }
     return self;
 }
@@ -130,10 +130,6 @@
     if ([usersTable numberOfRowsInSection:0] == 0) {
         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
     }
-}
-
-- (IBAction)dismissInstructionLabel:(id)sender {
-     [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.0f];
 }
 
 #pragma mark - Row Editing
@@ -215,6 +211,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Button Tap Methods
 // Add Button Tapped
 - (IBAction)addNewUser:(id)sender
 {
@@ -232,6 +229,12 @@
     [self.usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.namesList count] - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
+// InstructionLabel "Got It" Tapped
+- (IBAction)dismissInstructionLabel:(id)sender {
+    [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.15f];
+}
+
+#pragma mark - Table View Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -261,8 +264,6 @@
          cell.backgroundColor = _sliceColors[indexPath.row];
      }
 
-      
-    
     return cell;
 }
 
@@ -302,11 +303,6 @@
     
     [selectedCell.nameField setUserInteractionEnabled:NO];
     [selectedCell textFieldShouldEndEditing:selectedCell.nameField];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
 }
 
 - (void)sendArrayNamesBack
@@ -355,7 +351,7 @@
                              _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
                              
                              // Change filter alpha
-                             _backgroundFilterView.alpha = 1.0;
+                             _backgroundFilterView.alpha = 0.5;
         
                          } else {
                              [_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 820, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
@@ -363,7 +359,7 @@
                              
                              // Change filter alpha
                              _backgroundFilterView.alpha = 0.0;
-                           [self.navigationController.navigationBar setHidden:NO];
+                          // [self.navigationController.navigationBar setHidden:NO];
                            
                          }
                      }
@@ -373,14 +369,9 @@
                              [_userTextField setEnabled:YES];
                              [_userTextField becomeFirstResponder];
                          } else {
-                              [self.navigationController.navigationBar setHidden:YES];
+                              //[self.navigationController.navigationBar setHidden:YES];
                          }
                      }];
     
-}
-
-- (void)dismissInstruction
-{
-    [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.0f];
 }
 @end

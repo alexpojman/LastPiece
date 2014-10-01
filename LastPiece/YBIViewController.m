@@ -43,11 +43,15 @@
             if(result.height == 480)
             {
                 nibName = @"YBIViewController3";
+                _pieChartAnimationValue = 130;
+                _rotateButtonAnimationValue = 440;
                 
             }
             if(result.height == 568)
             {
                 nibName = @"YBIViewController";
+                _pieChartAnimationValue = 130;
+                _rotateButtonAnimationValue = 300;
             }
         }
         self = [super initWithNibName:nibName bundle:nil];
@@ -60,14 +64,6 @@
         
         // Left Bar Navigation Item Setup
         navItem.leftBarButtonItem = bbi;
-        //[navItem.leftBarButtonItem setTintColor:[UICOl]];
-        
-        //TODO: Decide if we want border around frame
-        CGFloat borderWidth = 2.0f;
-        
-        self.view.frame = CGRectInset(self.view.frame, -borderWidth, -borderWidth);
-        self.view.layer.borderColor = UIColorFromRGB(paletteOrange).CGColor;
-        self.view.layer.borderWidth = borderWidth;
         
         // Set Colors
         [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
@@ -323,19 +319,19 @@
                      animations: ^{
                          // Move pie chart
                          //TODO: update variables instead of magic numbers
-                         [self.pieChart setFrame:CGRectMake(160, 450, 280, 280)];
-                         self.pieChart.transform = CGAffineTransformTranslate(self.pieChart.transform, self.pieChart.transform.tx, self.pieChart.transform.ty - 130);
+                         [self.pieChart setFrame:CGRectMake(160, 450, self.pieChart.frame.size.width, self.pieChart.frame.size.height)];
+                         self.pieChart.transform = CGAffineTransformTranslate(self.pieChart.transform, self.pieChart.transform.tx, self.pieChart.transform.ty - _pieChartAnimationValue);
                          
                          // Move the progress bar
-                         [self.progressBar setFrame:CGRectMake(40, 495, 250, 60)];
-                         self.progressBar.transform = CGAffineTransformTranslate(self.progressBar.transform, self.progressBar.transform.tx - 1000, self.progressBar.transform.ty);
+                         [self.progressContainer setFrame:CGRectMake(160, 518, self.progressContainer.frame.size.width, self.progressContainer.frame.size.height)];
+                         self.progressContainer.transform = CGAffineTransformTranslate(self.progressContainer.transform, self.progressContainer.transform.tx - 1000, self.progressContainer.transform.ty);
                          
                          // Move Spin logo
                          [self.spinToBeginLogo setFrame:CGRectMake(self.spinToBeginLogo.transform.tx + 160, self.spinToBeginLogo.transform.ty - 200, self.spinToBeginLogo.frame.size.width, self.spinToBeginLogo.frame.size.height)];
                          self.spinToBeginLogo.transform = CGAffineTransformTranslate(self.spinToBeginLogo.transform, self.spinToBeginLogo.transform.tx, self.spinToBeginLogo.transform.ty - 2000);
                          
                          // Move the rotate button
-                         self.rotateButton.transform = CGAffineTransformTranslate(self.rotateButton.transform, self.rotateButton.transform.tx, self.rotateButton.transform.ty - 300);
+                         self.rotateButton.transform = CGAffineTransformTranslate(self.rotateButton.transform, self.rotateButton.transform.tx, self.rotateButton.transform.ty - _rotateButtonAnimationValue);
                          
                          // Move ticker symbol
                          self.tickerSymbol.transform = CGAffineTransformTranslate(self.tickerSymbol.transform, self.tickerSymbol.transform.tx - 90, self.tickerSymbol.transform.ty);

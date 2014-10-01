@@ -122,7 +122,6 @@
 
 #pragma mark - Touch Handlers
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"touches began");
     if (_decelerating) {
         [self endDeceleration];
     }
@@ -198,7 +197,7 @@
     CGPoint point = [[touches anyObject] locationInView:self];
     CGFloat angle = [self angleBetweenCenterAndPoint:point];
     
-    if (self.delegate != NULL && [self.delegate respondsToSelector:@selector(trackingDidEndAtAbsoluteAngle:)]) {
+    if (self.delegate != NULL && [self.delegate respondsToSelector:@selector(trackingDidEndAtAbsoluteAngle:withDeceleration:)]) {
         [self.delegate trackingDidEndAtAbsoluteAngle:angle withDeceleration:_inertiaEnabled];
     }
     
@@ -255,7 +254,6 @@
 -(void)beginDeceleration {
     
     CGFloat v = [self velocity];
-//    NSLog(@"Velocity: %f", v);
     
     // Taking a risk here that the delegate will not change or be destroyed while we're in the middle of animating the deceleration
     if (self.delegate != NULL && [self.delegate respondsToSelector:@selector(rotationDidChangeByAngle:)]) {

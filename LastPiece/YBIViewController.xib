@@ -9,6 +9,7 @@
                 <outlet property="pieChart" destination="LbT-Ol-Tpp" id="ie6-DO-uCV"/>
                 <outlet property="piePlaceholder" destination="TN8-pZ-gsB" id="GOr-oO-w7c"/>
                 <outlet property="progressBar" destination="S4g-RZ-nr9" id="qjQ-3w-G5d"/>
+                <outlet property="progressContainer" destination="5iI-sg-xJl" id="Hns-gY-Hg5"/>
                 <outlet property="rotateButton" destination="ogG-7w-I9a" id="RTf-33-CYi"/>
                 <outlet property="rotationControl" destination="jBc-kf-9Tg" id="5pn-mv-Ihm"/>
                 <outlet property="spinToBeginLogo" destination="ytB-1X-QZx" id="syB-DO-khg"/>
@@ -58,15 +59,6 @@
                     <rect key="frame" x="325" y="215" width="33" height="86"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressImage="LP_Initial_Circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-RZ-nr9">
-                    <rect key="frame" x="35" y="488" width="250" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <rect key="contentStretch" x="0.0" y="0.79999999999999982" width="1" height="1"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="2W4-KJ-HG7"/>
-                        <constraint firstAttribute="width" constant="250" id="8So-pe-GV4"/>
-                    </constraints>
-                </progressView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Winner Is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hI-7J-Es4">
                     <rect key="frame" x="-413" y="221" width="325" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,13 +71,40 @@
                     <rect key="frame" x="35" y="71" width="250" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iI-sg-xJl" userLabel="View - Progress Container">
+                    <rect key="frame" x="35" y="488" width="250" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-RZ-nr9">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="contentStretch" x="0.0" y="0.79999999999999982" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="2W4-KJ-HG7"/>
+                                <constraint firstAttribute="width" constant="250" id="8So-pe-GV4"/>
+                            </constraints>
+                        </progressView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="progressBarMask.png" translatesAutoresizingMaskIntoConstraints="NO" id="koE-lj-esY">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="S4g-RZ-nr9" secondAttribute="bottom" id="5Pj-bj-oKQ"/>
+                        <constraint firstItem="S4g-RZ-nr9" firstAttribute="leading" secondItem="5iI-sg-xJl" secondAttribute="leading" id="ORA-5a-AJk"/>
+                        <constraint firstAttribute="height" constant="60" id="TEw-RU-h6w"/>
+                        <constraint firstItem="S4g-RZ-nr9" firstAttribute="top" secondItem="5iI-sg-xJl" secondAttribute="top" id="Yib-Ua-wLa"/>
+                        <constraint firstAttribute="width" constant="250" id="jBm-0d-Tdg"/>
+                        <constraint firstAttribute="trailing" secondItem="S4g-RZ-nr9" secondAttribute="trailing" id="yDx-Bc-BPs"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="S4g-RZ-nr9" secondAttribute="centerX" id="0J8-EK-ubJ"/>
                 <constraint firstAttribute="centerY" secondItem="LbT-Ol-Tpp" secondAttribute="centerY" constant="-40" id="4BS-7q-WM3"/>
+                <constraint firstAttribute="centerX" secondItem="5iI-sg-xJl" secondAttribute="centerX" id="Smp-Ti-1gY"/>
                 <constraint firstAttribute="centerX" secondItem="LbT-Ol-Tpp" secondAttribute="centerX" id="ewK-Cs-Swc"/>
-                <constraint firstAttribute="centerY" secondItem="S4g-RZ-nr9" secondAttribute="centerY" constant="-234" id="sGb-Ky-oSa"/>
+                <constraint firstAttribute="centerY" secondItem="5iI-sg-xJl" secondAttribute="centerY" constant="-234" id="obb-eu-3vX"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -113,8 +132,8 @@
         </navigationController>
     </objects>
     <resources>
-        <image name="LP_Initial_Circle.png" width="280" height="280"/>
         <image name="Ticker_v3.png" width="124" height="99"/>
+        <image name="progressBarMask.png" width="250" height="60"/>
         <image name="spinToBegin.png" width="392" height="207"/>
         <image name="splashCircle.png" width="413" height="405"/>
     </resources>

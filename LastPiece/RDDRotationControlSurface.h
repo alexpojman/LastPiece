@@ -43,6 +43,10 @@
 -(void)trackingDidEndAtAbsoluteAngle:(CGFloat)angle withDeceleration:(BOOL)decelerating; // If deceleration is YES, then the delegate knows that subsequent rotationDidChangeByAngle calls are coming from the deceleration.
 -(void)decelerationDidEnd;
 -(void)trackingCanceled;
+-(void)trackingBeganAtAbsoluteAngle:(CGFloat)angle;
+
+
+
 
 @end
 

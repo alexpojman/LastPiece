@@ -31,7 +31,7 @@
                             <rect key="frame" x="-2" y="0.0" width="284" height="280"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBc-kf-9Tg" customClass="RDDRotationControlSurface">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBc-kf-9Tg" customClass="RDDRotationControlSurface">
                             <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -42,7 +42,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="DeO-vF-QKt"/>
+                        <constraint firstAttribute="trailing" secondItem="jBc-kf-9Tg" secondAttribute="trailing" id="SVj-qs-DCw"/>
+                        <constraint firstAttribute="bottom" secondItem="jBc-kf-9Tg" secondAttribute="bottom" id="Y5A-yx-Xno"/>
+                        <constraint firstItem="jBc-kf-9Tg" firstAttribute="top" secondItem="LbT-Ol-Tpp" secondAttribute="top" id="mfp-1F-9pN"/>
                         <constraint firstAttribute="height" constant="280" id="vvX-9h-8K5"/>
+                        <constraint firstItem="jBc-kf-9Tg" firstAttribute="leading" secondItem="LbT-Ol-Tpp" secondAttribute="leading" id="zIF-1Z-YjZ"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogG-7w-I9a">
@@ -60,7 +64,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Winner Is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hI-7J-Es4">
-                    <rect key="frame" x="-413" y="185" width="325" height="59"/>
+                    <rect key="frame" x="-413" y="193" width="325" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

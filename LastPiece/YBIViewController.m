@@ -80,7 +80,6 @@
         [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                        [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
-        
         // Set font for winner label
         UIFont *font=[UIFont fontWithName:@"MyriadPro-Regular" size:24];
         [self.winnerLabel setFont:font];
@@ -147,10 +146,8 @@
                         UIColorFromRGB(paletteYellowAlt),
                       nil];
     }
-
-
-    
 }
+
 - (void)viewDidUnload
 {
     [self setPieChart:nil];
@@ -232,7 +229,7 @@
 }
 
 #pragma mark - User Control Options
-- (IBAction) rotate:(UIButton *)sender
+- (IBAction)rotate:(UIButton *)sender
 {
     if([[[_rotateButton titleLabel] text] isEqual: @"GO"]) {
         if (self.pieChart.sliceAnimating == YES) {
@@ -256,7 +253,7 @@
 }
 
 #pragma mark - Animation Methods
-- (void) fadeButtonWithOptions: (UIViewAnimationOptions) options newAlpha:(float)newAlpha buttonToDisplay:(NSString*)buttonName
+- (void)fadeButtonWithOptions: (UIViewAnimationOptions) options newAlpha:(float)newAlpha buttonToDisplay:(NSString*)buttonName
 {
     [UIView animateWithDuration:.15f
                           delay: 0.0f
@@ -281,7 +278,7 @@
                      }];
 }
 
-- (void) spinWithOptions: (UIViewAnimationOptions) options
+- (void)spinWithOptions: (UIViewAnimationOptions) options
 {
     // Spin the pie chart
     [UIView animateWithDuration: .00001f
@@ -311,7 +308,7 @@
                      }];
 }
 
-- (void) movePieChartConstraintWithOptions: (UIViewAnimationOptions) options
+- (void)movePieChartConstraintWithOptions: (UIViewAnimationOptions) options
 {
     [UIView animateWithDuration: 1.5f
                           delay: 0.5f

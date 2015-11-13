@@ -41,6 +41,7 @@
 @property(nonatomic, assign) CGFloat selectedSliceOffsetRadius;
 @property(nonatomic) BOOL sliceAnimating;
 
+
 - (id)initWithFrame:(CGRect)frame Center:(CGPoint)center Radius:(CGFloat)radius;
 - (void)reloadData;
 - (void)setPieBackgroundColor:(UIColor *)color;

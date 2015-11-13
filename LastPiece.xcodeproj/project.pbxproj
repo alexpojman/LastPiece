@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED095CD71BF1A3EB00246080 /* elim_mode0.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD11BF1A3EB00246080 /* elim_mode0.png */; };
+		ED095CD81BF1A3EB00246080 /* elim_mode1.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD21BF1A3EB00246080 /* elim_mode1.png */; };
+		ED095CD91BF1A3EB00246080 /* elim_mode2.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD31BF1A3EB00246080 /* elim_mode2.png */; };
+		ED095CDA1BF1A3EB00246080 /* elim_mode3.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD41BF1A3EB00246080 /* elim_mode3.png */; };
+		ED095CDB1BF1A3EB00246080 /* elim_mode4.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD51BF1A3EB00246080 /* elim_mode4.png */; };
+		ED095CDC1BF1A3EB00246080 /* elim_mode5.png in Resources */ = {isa = PBXBuildFile; fileRef = ED095CD61BF1A3EB00246080 /* elim_mode5.png */; };
 		ED0B360719C902C6006D5066 /* LP_Initial_Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360619C902C6006D5066 /* LP_Initial_Circle.png */; };
 		ED0B361019CA79C4006D5066 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */; };
 		ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0B361219CA7D41006D5066 /* splashCircle.png */; };
 		ED0B361719CF89D1006D5066 /* RDDRotationControlSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */; };
+		ED15655E1B38DCFB00FE82EF /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = ED15655D1B38DCFB00FE82EF /* hamburger.png */; };
+		ED1565601B38DD8800FE82EF /* hamburger32.png in Resources */ = {isa = PBXBuildFile; fileRef = ED15655F1B38DD8800FE82EF /* hamburger32.png */; };
+		ED1C38C01B3B4D75006034BD /* Save As-50.png in Resources */ = {isa = PBXBuildFile; fileRef = ED1C38BF1B3B4D75006034BD /* Save As-50.png */; };
+		ED2BE7701B39A3DC00EC5448 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2BE76F1B39A3DC00EC5448 /* HamburgerButton.swift */; };
 		ED2FA2D219C8BAA900F88993 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D119C8BAA900F88993 /* go.png */; };
 		ED2FA2D419C8BADF00F88993 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D319C8BADF00F88993 /* stop.png */; };
 		ED2FA2D619C8C1CE00F88993 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D519C8C0E300F88993 /* MyriadPro-Regular.otf */; };
 		ED2FA2D819C8C42E00F88993 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED2FA2D719C8C40D00F88993 /* MyriadPro-Bold.otf */; };
+		ED5720301BF2F74E00DDCB96 /* Floppy-Disk.png in Resources */ = {isa = PBXBuildFile; fileRef = ED57202F1BF2F74E00DDCB96 /* Floppy-Disk.png */; };
+		ED6619EB1BEE747100BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03-04.png in Resources */ = {isa = PBXBuildFile; fileRef = ED6619EA1BEE747100BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03-04.png */; };
+		ED6619ED1BEE74AA00BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03.png in Resources */ = {isa = PBXBuildFile; fileRef = ED6619EC1BEE74AA00BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03.png */; };
+		ED72D43C1BEE859300CC6301 /* LBHamburgerButton.h in Sources */ = {isa = PBXBuildFile; fileRef = ED72D43A1BEE859300CC6301 /* LBHamburgerButton.h */; };
+		ED72D43D1BEE859300CC6301 /* LBHamburgerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ED72D43B1BEE859300CC6301 /* LBHamburgerButton.m */; };
 		ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */ = {isa = PBXBuildFile; fileRef = ED783FED19C681CB0084DCE0 /* ticker-a.png */; };
 		ED8232AE19D60E5900AF9866 /* Ticker_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232AD19D60E5900AF9866 /* Ticker_v3.png */; };
 		ED8232B019D6169300AF9866 /* blurred_SliceList.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232AF19D6169300AF9866 /* blurred_SliceList.png */; };
@@ -24,6 +39,8 @@
 		ED8232C019DB9C1F00AF9866 /* YBIViewController3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8232BF19DB9C1F00AF9866 /* YBIViewController3.xib */; };
 		ED8232C219DBA4F800AF9866 /* LP_R4_Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232C119DBA4F800AF9866 /* LP_R4_Launch.png */; };
 		ED8232C419DBA50300AF9866 /* LP_2X_Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = ED8232C319DBA50300AF9866 /* LP_2X_Launch.png */; };
+		ED9390BB1B2DF31B002DE93A /* YBISettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9390B91B2DF31B002DE93A /* YBISettingsViewController.m */; };
+		ED9390BC1B2DF31B002DE93A /* YBISettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9390BA1B2DF31B002DE93A /* YBISettingsViewController.xib */; };
 		ED9F9C9F19888B8E00D754EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9C9E19888B8E00D754EA /* Foundation.framework */; };
 		ED9F9CA119888B8E00D754EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */; };
 		ED9F9CA319888B8E00D754EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9F9CA219888B8E00D754EA /* UIKit.framework */; };
@@ -49,6 +66,13 @@
 		EDBD12DC1995654000E5DE0F /* YBINameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12DA1995654000E5DE0F /* YBINameCell.m */; };
 		EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBD12DB1995654000E5DE0F /* YBINameCell.xib */; };
 		EDBD12E0199675C500E5DE0F /* YBISwirlGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */; };
+		EDC906D91A43285F00F9C906 /* YBIListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC906D71A43285F00F9C906 /* YBIListCell.m */; };
+		EDC906DA1A43285F00F9C906 /* YBIListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC906D81A43285F00F9C906 /* YBIListCell.xib */; };
+		EDC906DE1A43693100F9C906 /* YBIListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC906DC1A43693100F9C906 /* YBIListTableViewController.m */; };
+		EDC906DF1A43693100F9C906 /* YBIListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC906DD1A43693100F9C906 /* YBIListTableViewController.xib */; };
+		EDC906E31A44B3C500F9C906 /* popover_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EDC906E21A44B3C500F9C906 /* popover_button.png */; };
+		EDC906E51A44B59100F9C906 /* popover_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = EDC906E41A44B59100F9C906 /* popover_v3.png */; };
+		EDC906E81A44B7B800F9C906 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC906E71A44B7B800F9C906 /* SWRevealViewController.m */; };
 		EDE6086819C1EE0C002C507E /* left arrow.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EDE6086719C1EE0C002C507E /* left arrow.jpeg */; };
 		EDE6086B19C25FC4002C507E /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE6086A19C25FC4002C507E /* TPKeyboardAvoidingTableView.m */; };
 		EDE6086E19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE6086D19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -66,16 +90,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED095CD11BF1A3EB00246080 /* elim_mode0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode0.png; sourceTree = "<group>"; };
+		ED095CD21BF1A3EB00246080 /* elim_mode1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode1.png; sourceTree = "<group>"; };
+		ED095CD31BF1A3EB00246080 /* elim_mode2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode2.png; sourceTree = "<group>"; };
+		ED095CD41BF1A3EB00246080 /* elim_mode3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode3.png; sourceTree = "<group>"; };
+		ED095CD51BF1A3EB00246080 /* elim_mode4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode4.png; sourceTree = "<group>"; };
+		ED095CD61BF1A3EB00246080 /* elim_mode5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elim_mode5.png; sourceTree = "<group>"; };
 		ED0B360619C902C6006D5066 /* LP_Initial_Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LP_Initial_Circle.png; sourceTree = "<group>"; };
 		ED0B360E19CA7991006D5066 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
 		ED0B360F19CA79C4006D5066 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
 		ED0B361219CA7D41006D5066 /* splashCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashCircle.png; sourceTree = "<group>"; };
 		ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDRotationControlSurface.h; sourceTree = "<group>"; };
 		ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDRotationControlSurface.m; sourceTree = "<group>"; };
+		ED15655D1B38DCFB00FE82EF /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
+		ED15655F1B38DD8800FE82EF /* hamburger32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger32.png; sourceTree = "<group>"; };
+		ED1C38BF1B3B4D75006034BD /* Save As-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save As-50.png"; sourceTree = "<group>"; };
+		ED2BE76E1B39A3DC00EC5448 /* LastPiece-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LastPiece-Bridging-Header.h"; sourceTree = "<group>"; };
+		ED2BE76F1B39A3DC00EC5448 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerButton.swift; sourceTree = "<group>"; };
 		ED2FA2D119C8BAA900F88993 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
 		ED2FA2D319C8BADF00F88993 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		ED2FA2D519C8C0E300F88993 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		ED2FA2D719C8C40D00F88993 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		ED57202F1BF2F74E00DDCB96 /* Floppy-Disk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Floppy-Disk.png"; sourceTree = "<group>"; };
+		ED6619EA1BEE747100BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LastPiece-Survivor-Mode.rev3-w-transition_03-04.png"; sourceTree = "<group>"; };
+		ED6619EC1BEE74AA00BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LastPiece-Survivor-Mode.rev3-w-transition_03.png"; sourceTree = "<group>"; };
+		ED72D43A1BEE859300CC6301 /* LBHamburgerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBHamburgerButton.h; sourceTree = "<group>"; };
+		ED72D43B1BEE859300CC6301 /* LBHamburgerButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBHamburgerButton.m; sourceTree = "<group>"; };
 		ED783FED19C681CB0084DCE0 /* ticker-a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ticker-a.png"; sourceTree = "<group>"; };
 		ED8232AD19D60E5900AF9866 /* Ticker_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ticker_v3.png; sourceTree = "<group>"; };
 		ED8232AF19D6169300AF9866 /* blurred_SliceList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurred_SliceList.png; sourceTree = "<group>"; };
@@ -85,6 +125,9 @@
 		ED8232BF19DB9C1F00AF9866 /* YBIViewController3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIViewController3.xib; sourceTree = "<group>"; };
 		ED8232C119DBA4F800AF9866 /* LP_R4_Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LP_R4_Launch.png; sourceTree = "<group>"; };
 		ED8232C319DBA50300AF9866 /* LP_2X_Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LP_2X_Launch.png; sourceTree = "<group>"; };
+		ED9390B81B2DF31B002DE93A /* YBISettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBISettingsViewController.h; sourceTree = "<group>"; };
+		ED9390B91B2DF31B002DE93A /* YBISettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBISettingsViewController.m; sourceTree = "<group>"; };
+		ED9390BA1B2DF31B002DE93A /* YBISettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBISettingsViewController.xib; sourceTree = "<group>"; };
 		ED9F9C9B19888B8E00D754EA /* LastPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9F9C9E19888B8E00D754EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED9F9CA019888B8E00D754EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,6 +168,16 @@
 		EDBD12DB1995654000E5DE0F /* YBINameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBINameCell.xib; sourceTree = "<group>"; };
 		EDBD12DE199675C500E5DE0F /* YBISwirlGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBISwirlGestureRecognizer.h; sourceTree = "<group>"; };
 		EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBISwirlGestureRecognizer.m; sourceTree = "<group>"; };
+		EDC906D61A43285F00F9C906 /* YBIListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIListCell.h; sourceTree = "<group>"; };
+		EDC906D71A43285F00F9C906 /* YBIListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIListCell.m; sourceTree = "<group>"; };
+		EDC906D81A43285F00F9C906 /* YBIListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIListCell.xib; sourceTree = "<group>"; };
+		EDC906DB1A43693100F9C906 /* YBIListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIListTableViewController.h; sourceTree = "<group>"; };
+		EDC906DC1A43693100F9C906 /* YBIListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIListTableViewController.m; sourceTree = "<group>"; };
+		EDC906DD1A43693100F9C906 /* YBIListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBIListTableViewController.xib; sourceTree = "<group>"; };
+		EDC906E21A44B3C500F9C906 /* popover_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popover_button.png; sourceTree = "<group>"; };
+		EDC906E41A44B59100F9C906 /* popover_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popover_v3.png; sourceTree = "<group>"; };
+		EDC906E61A44B7B800F9C906 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		EDC906E71A44B7B800F9C906 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EDE6086719C1EE0C002C507E /* left arrow.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "left arrow.jpeg"; sourceTree = "<group>"; };
 		EDE6086919C25FC4002C507E /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		EDE6086A19C25FC4002C507E /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
@@ -161,6 +214,20 @@
 		ED8232B719DAD4D500AF9866 /* Image Assets */ = {
 			isa = PBXGroup;
 			children = (
+				ED095CD11BF1A3EB00246080 /* elim_mode0.png */,
+				ED57202F1BF2F74E00DDCB96 /* Floppy-Disk.png */,
+				ED095CD21BF1A3EB00246080 /* elim_mode1.png */,
+				ED095CD31BF1A3EB00246080 /* elim_mode2.png */,
+				ED095CD41BF1A3EB00246080 /* elim_mode3.png */,
+				ED095CD51BF1A3EB00246080 /* elim_mode4.png */,
+				ED095CD61BF1A3EB00246080 /* elim_mode5.png */,
+				ED6619EC1BEE74AA00BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03.png */,
+				ED6619EA1BEE747100BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03-04.png */,
+				ED1C38BF1B3B4D75006034BD /* Save As-50.png */,
+				ED15655F1B38DD8800FE82EF /* hamburger32.png */,
+				ED15655D1B38DCFB00FE82EF /* hamburger.png */,
+				EDC906E41A44B59100F9C906 /* popover_v3.png */,
+				EDC906E21A44B3C500F9C906 /* popover_button.png */,
 				ED8232C319DBA50300AF9866 /* LP_2X_Launch.png */,
 				ED8232C119DBA4F800AF9866 /* LP_R4_Launch.png */,
 				ED8232B919DB654200AF9866 /* progressBarMask.png */,
@@ -225,7 +292,8 @@
 		ED9F9CA419888B8E00D754EA /* LastPiece */ = {
 			isa = PBXGroup;
 			children = (
-				ED8232B719DAD4D500AF9866 /* Image Assets */,
+				EDC906E61A44B7B800F9C906 /* SWRevealViewController.h */,
+				EDC906E71A44B7B800F9C906 /* SWRevealViewController.m */,
 				ED0B361519CF89D0006D5066 /* RDDRotationControlSurface.h */,
 				ED0B361619CF89D0006D5066 /* RDDRotationControlSurface.m */,
 				EDE6086F19C26009002C507E /* TPKeyboardAvoidingScrollView.h */,
@@ -234,6 +302,9 @@
 				EDE6086D19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				EDE6086919C25FC4002C507E /* TPKeyboardAvoidingTableView.h */,
 				EDE6086A19C25FC4002C507E /* TPKeyboardAvoidingTableView.m */,
+				ED2BE76F1B39A3DC00EC5448 /* HamburgerButton.swift */,
+				ED72D43A1BEE859300CC6301 /* LBHamburgerButton.h */,
+				ED72D43B1BEE859300CC6301 /* LBHamburgerButton.m */,
 				ED9F9CD21988967B00D754EA /* YBIViewController.h */,
 				ED9F9CD31988967B00D754EA /* YBIViewController.m */,
 				ED9F9CD41988967B00D754EA /* YBIViewController.xib */,
@@ -243,6 +314,15 @@
 				EDBD12D6199555D300E5DE0F /* YBIAddNameViewController.xib */,
 				EDBD12DE199675C500E5DE0F /* YBISwirlGestureRecognizer.h */,
 				EDBD12DF199675C500E5DE0F /* YBISwirlGestureRecognizer.m */,
+				EDC906DB1A43693100F9C906 /* YBIListTableViewController.h */,
+				EDC906DC1A43693100F9C906 /* YBIListTableViewController.m */,
+				EDC906DD1A43693100F9C906 /* YBIListTableViewController.xib */,
+				ED9390B81B2DF31B002DE93A /* YBISettingsViewController.h */,
+				ED9390B91B2DF31B002DE93A /* YBISettingsViewController.m */,
+				ED9390BA1B2DF31B002DE93A /* YBISettingsViewController.xib */,
+				EDC906D61A43285F00F9C906 /* YBIListCell.h */,
+				EDC906D71A43285F00F9C906 /* YBIListCell.m */,
+				EDC906D81A43285F00F9C906 /* YBIListCell.xib */,
 				EDBD12D91995654000E5DE0F /* YBINameCell.h */,
 				EDBD12DA1995654000E5DE0F /* YBINameCell.m */,
 				EDBD12DB1995654000E5DE0F /* YBINameCell.xib */,
@@ -250,6 +330,8 @@
 				ED9F9CCE19888E9B00D754EA /* YBIPieChart.m */,
 				ED9F9CAD19888B8E00D754EA /* YBIAppDelegate.h */,
 				ED9F9CAE19888B8E00D754EA /* YBIAppDelegate.m */,
+				ED2BE76E1B39A3DC00EC5448 /* LastPiece-Bridging-Header.h */,
+				ED8232B719DAD4D500AF9866 /* Image Assets */,
 				ED9F9CB019888B8E00D754EA /* Images.xcassets */,
 				ED9F9CA519888B8E00D754EA /* Supporting Files */,
 			);
@@ -347,7 +429,9 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YBI;
-				LastUpgradeCheck = 0510;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ya Boi Inc";
 				TargetAttributes = {
 					ED9F9C9A19888B8E00D754EA = {
@@ -383,27 +467,44 @@
 			files = (
 				ED2FA2D819C8C42E00F88993 /* MyriadPro-Bold.otf in Resources */,
 				ED2FA2D619C8C1CE00F88993 /* MyriadPro-Regular.otf in Resources */,
+				ED095CD91BF1A3EB00246080 /* elim_mode2.png in Resources */,
+				ED095CD71BF1A3EB00246080 /* elim_mode0.png in Resources */,
+				ED5720301BF2F74E00DDCB96 /* Floppy-Disk.png in Resources */,
 				ED8232B219D98D3D00AF9866 /* spinToBegin.png in Resources */,
 				ED8232C419DBA50300AF9866 /* LP_2X_Launch.png in Resources */,
 				ED0B361019CA79C4006D5066 /* MyriadPro-BoldCond.otf in Resources */,
+				ED095CD81BF1A3EB00246080 /* elim_mode1.png in Resources */,
 				EDBD12DD1995654000E5DE0F /* YBINameCell.xib in Resources */,
 				ED0B361419CA7D41006D5066 /* splashCircle.png in Resources */,
 				ED8232C019DB9C1F00AF9866 /* YBIViewController3.xib in Resources */,
 				ED8232AE19D60E5900AF9866 /* Ticker_v3.png in Resources */,
 				ED8232BE19DB914600AF9866 /* popover.png in Resources */,
+				EDC906DF1A43693100F9C906 /* YBIListTableViewController.xib in Resources */,
+				ED6619ED1BEE74AA00BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03.png in Resources */,
 				ED783FEE19C681CB0084DCE0 /* ticker-a.png in Resources */,
+				ED6619EB1BEE747100BFBF21 /* LastPiece-Survivor-Mode.rev3-w-transition_03-04.png in Resources */,
 				EDB5B05C19D1100D006E4C67 /* Ticker.png in Resources */,
+				ED095CDB1BF1A3EB00246080 /* elim_mode4.png in Resources */,
 				ED9F9CA919888B8E00D754EA /* InfoPlist.strings in Resources */,
 				ED9F9CD61988967B00D754EA /* YBIViewController.xib in Resources */,
 				ED0B360719C902C6006D5066 /* LP_Initial_Circle.png in Resources */,
 				ED8232C219DBA4F800AF9866 /* LP_R4_Launch.png in Resources */,
+				ED095CDC1BF1A3EB00246080 /* elim_mode5.png in Resources */,
+				ED095CDA1BF1A3EB00246080 /* elim_mode3.png in Resources */,
+				ED9390BC1B2DF31B002DE93A /* YBISettingsViewController.xib in Resources */,
+				ED15655E1B38DCFB00FE82EF /* hamburger.png in Resources */,
+				EDC906DA1A43285F00F9C906 /* YBIListCell.xib in Resources */,
 				ED2FA2D419C8BADF00F88993 /* stop.png in Resources */,
+				ED1C38C01B3B4D75006034BD /* Save As-50.png in Resources */,
 				EDE6086819C1EE0C002C507E /* left arrow.jpeg in Resources */,
 				ED2FA2D219C8BAA900F88993 /* go.png in Resources */,
+				EDC906E31A44B3C500F9C906 /* popover_button.png in Resources */,
+				ED1565601B38DD8800FE82EF /* hamburger32.png in Resources */,
 				EDBD12D8199555D300E5DE0F /* YBIAddNameViewController.xib in Resources */,
 				ED8232B019D6169300AF9866 /* blurred_SliceList.png in Resources */,
 				ED9F9CB119888B8E00D754EA /* Images.xcassets in Resources */,
 				ED8232BA19DB654200AF9866 /* progressBarMask.png in Resources */,
+				EDC906E51A44B59100F9C906 /* popover_v3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,14 +523,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED72D43C1BEE859300CC6301 /* LBHamburgerButton.h in Sources */,
+				ED72D43D1BEE859300CC6301 /* LBHamburgerButton.m in Sources */,
+				EDC906DE1A43693100F9C906 /* YBIListTableViewController.m in Sources */,
 				ED9F9CAB19888B8E00D754EA /* main.m in Sources */,
 				ED9F9CE41989AD6300D754EA /* UIColor+Chameleon.m in Sources */,
 				ED0B361719CF89D1006D5066 /* RDDRotationControlSurface.m in Sources */,
 				ED9F9CD51988967B00D754EA /* YBIViewController.m in Sources */,
+				ED9390BB1B2DF31B002DE93A /* YBISettingsViewController.m in Sources */,
+				EDC906E81A44B7B800F9C906 /* SWRevealViewController.m in Sources */,
 				EDE6086E19C25FF9002C507E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				ED9F9CE51989AD6300D754EA /* UIViewController+Chameleon.m in Sources */,
 				EDBD12D7199555D300E5DE0F /* YBIAddNameViewController.m in Sources */,
 				ED9F9CE21989AD6300D754EA /* ChameleonStatusBar.m in Sources */,
+				EDC906D91A43285F00F9C906 /* YBIListCell.m in Sources */,
 				EDE6087119C26009002C507E /* TPKeyboardAvoidingScrollView.m in Sources */,
 				EDBD12DC1995654000E5DE0F /* YBINameCell.m in Sources */,
 				ED9F9CE31989AD6300D754EA /* NSArray+Chameleon.m in Sources */,
@@ -437,6 +544,7 @@
 				EDE6086B19C25FC4002C507E /* TPKeyboardAvoidingTableView.m in Sources */,
 				EDBD12E0199675C500E5DE0F /* YBISwirlGestureRecognizer.m in Sources */,
 				ED9F9CAF19888B8E00D754EA /* YBIAppDelegate.m in Sources */,
+				ED2BE7701B39A3DC00EC5448 /* HamburgerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +604,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -558,7 +667,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LastPiece/LastPiece-Prefix.pch";
 				INFOPLIST_FILE = "LastPiece/LastPiece-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaboiinc.LastPiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LastPiece/LastPiece-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -573,7 +687,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LastPiece/LastPiece-Prefix.pch";
 				INFOPLIST_FILE = "LastPiece/LastPiece-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaboiinc.LastPiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LastPiece/LastPiece-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -594,6 +712,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "LastPieceTests/LastPieceTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yaboiinc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -612,6 +731,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LastPiece/LastPiece-Prefix.pch";
 				INFOPLIST_FILE = "LastPieceTests/LastPieceTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yaboiinc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

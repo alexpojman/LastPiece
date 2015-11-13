@@ -9,6 +9,10 @@
 #import "YBIAppDelegate.h"
 #import "YBIViewController.h"
 #import "Chameleon.h"
+#import "YBIAddNameViewController.h"
+#import "YBIListTableViewController.h"
+#import "YBISettingsViewController.h"
+#import "SWRevealViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -26,12 +30,14 @@
     
     // Override point for customization after application launch.
     YBIViewController *mainViewController = [[YBIViewController alloc] init];
+    YBISettingsViewController *advc = [[YBISettingsViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:advc frontViewController:navController];
     
     // Place BNRItemsViewController's table view in the window hierarchy
-    self.window.rootViewController = navController;
+    self.window.rootViewController = revealController;
     
     // NavigationBar Customization
       

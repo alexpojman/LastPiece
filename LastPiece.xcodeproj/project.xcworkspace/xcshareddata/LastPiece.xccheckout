@@ -10,24 +10,36 @@
 	<string>LastPiece</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>222E43089A61767A4CEAA9ADC45D517E7F3DEB93</key>
+		<string>github.com:alexpojman/LastPiece.git</string>
 		<key>9F5B3AA6-9ED1-45FB-890F-5CBFB0DD7727</key>
 		<string>ssh://github.com/alexpojman/LastPiece.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LastPiece.xcodeproj/project.xcworkspace</string>
+	<string>LastPiece.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>9F5B3AA6-9ED1-45FB-890F-5CBFB0DD7727</key>
+		<key>222E43089A61767A4CEAA9ADC45D517E7F3DEB93</key>
 		<string>../..</string>
+		<key>9F5B3AA6-9ED1-45FB-890F-5CBFB0DD7727</key>
+		<string>../.. copy 8-12-14</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/alexpojman/LastPiece.git</string>
+	<string>github.com:alexpojman/LastPiece.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9F5B3AA6-9ED1-45FB-890F-5CBFB0DD7727</string>
+	<string>222E43089A61767A4CEAA9ADC45D517E7F3DEB93</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>222E43089A61767A4CEAA9ADC45D517E7F3DEB93</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LastPiece</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

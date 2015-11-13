@@ -9,6 +9,7 @@
 #import "YBIAddNameViewController.h"
 #import "YBINameCell.h"
 #import "Chameleon.h"
+#import "SWRevealViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -20,8 +21,6 @@
 #define paletteRedAlt    0xFF7A4F
 #define paletteOrange    0xFFB13F
 #define paletteOrangeAlt 0xFFD13F
-#define paletteYellow    0xFFDC50
-#define paletteYellowAlt 0xFFFC50
 
 @interface YBIAddNameViewController () <UITextFieldDelegate>
 
@@ -34,6 +33,8 @@
 @property (strong, nonatomic) NSMutableArray *namesList;
 @property (strong, nonatomic) NSIndexPath *currentIndexPaths;
 @property (strong, nonatomic) NSArray *sliceColors;
+
+
 @end
 
 @implementation YBIAddNameViewController
@@ -51,9 +52,11 @@
         // Nav bar items
         self.navigationItem.title = @"SLICE LIST";
         
+        // Bar button items
         UIBarButtonItem *finishItem = [[UIBarButtonItem alloc] initWithTitle:@"Finish" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
         
-        self.navigationItem.rightBarButtonItem = finishItem;
+        NSArray *rightButtons = @[finishItem];
+        self.navigationItem.rightBarButtonItems = rightButtons;
         
         self.navigationItem.leftBarButtonItem = [self editButtonItem];
         
@@ -64,6 +67,8 @@
         // Set Fonts for navItems
         [finishItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                         [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
+        
         [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"MyriadPro-Regular" size:18.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
         
@@ -73,14 +78,11 @@
                             UIColorFromRGB(paletteGreen),
                             UIColorFromRGB(paletteOrange),
                             UIColorFromRGB(paletteRed),
-                            UIColorFromRGB(paletteYellow),
                             UIColorFromRGB(paletteBlueAlt),
                             UIColorFromRGB(paletteGreenAlt),
                             UIColorFromRGB(paletteOrangeAlt),
                             UIColorFromRGB(paletteRedAlt),
-                            UIColorFromRGB(paletteYellowAlt),
                             nil];
-        
     }
     return self;
 }
@@ -123,13 +125,31 @@
     [self.usersTable setBackgroundColor:FlatWhite];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // Initialize Saved Lists
+    if (_listObjects == nil) {
+        _listObjects = [NSMutableArray array];
+    }
+    
+    // Get Saved Lists
+    [self retrieveSavedLists];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if ([usersTable numberOfRowsInSection:0] == 0) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([usersTable numberOfRowsInSection:0] == 0 && ![defaults boolForKey:@"hideInstructions"]) {
         [self animateInstructionLabel:UIViewAnimationOptionCurveEaseInOut animateOffScreen:NO delay:0.0f];
+    } else if ([defaults boolForKey:@"hideInstructions"]) {
+        [_userTextField setEnabled: YES];
+        [_userTextField becomeFirstResponder];
     }
+    
+    // Remove SWRevealViewControll Pan Gesture
+    //self.revealViewController.panGestureRecognizer.enabled = NO;
 }
 
 #pragma mark - Row Editing
@@ -185,7 +205,7 @@
     [self.navigationController setEditing:NO];
 }
 
-#pragma mark - 
+#pragma mark - Finish
 - (void)finish:(id)sender
 {
     if ( [self.namesList count] < 2)
@@ -232,6 +252,12 @@
 // InstructionLabel "Got It" Tapped
 - (IBAction)dismissInstructionLabel:(id)sender {
     [self animateInstructionLabel:UIViewAnimationOptionCurveEaseIn animateOffScreen:YES delay:0.15f];
+    
+    // Store user setting to not show message next time
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"hideInstructions"];
+    [defaults synchronize];
+    
 }
 
 #pragma mark - Table View Methods
@@ -348,14 +374,14 @@
                          
                          if (animateOffScreen == NO) {
                              [_instructionLabel setHidden:NO];
-                             _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                             _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 410, _instructionLabel.transform.ty);
                              
                              // Change filter alpha
                              _backgroundFilterView.alpha = 0.5;
         
                          } else {
-                             [_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 820, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
-                              _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 820, _instructionLabel.transform.ty);
+                             //[_instructionLabel setFrame:CGRectMake(_instructionLabel.transform.tx + 410, _instructionLabel.transform.ty, _instructionLabel.frame.size.width, _instructionLabel.frame.size.height)];
+                              _instructionLabel.transform = CGAffineTransformTranslate(_instructionLabel.transform, 410, _instructionLabel.transform.ty);
                              
                              // Change filter alpha
                              _backgroundFilterView.alpha = 0.0;
@@ -374,4 +400,19 @@
                      }];
     
 }
+
+#pragma mark - List Storage-Related Functions
+
+- (void)retrieveSavedLists{
+    NSMutableDictionary *storedLists = [[NSUserDefaults standardUserDefaults] valueForKey:@"saved_lists"];
+    
+    _listObjects = [[storedLists valueForKey:@"Lists"] mutableCopy]; // Returns array of "List" objects -> each list object has Name and Slice array
+    
+    if (_listObjects == nil) {
+        _listObjects = [NSMutableArray array];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

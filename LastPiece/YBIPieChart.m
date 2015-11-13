@@ -502,6 +502,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         layer.isSelected = YES;
         [self notifyDelegateOfSelectionChangeFrom:-1 to:index];
+    
         [self transformWithOptions:UIViewAnimationOptionOverrideInheritedOptions];
         
         // Highlight selected index
